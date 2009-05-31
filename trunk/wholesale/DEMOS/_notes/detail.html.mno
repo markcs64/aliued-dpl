@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="MM_css_include" value="http://style.alibaba.com/css/4v/css.css,http://style.alibaba.com/css/4v/grids.css" />
+	<infoitem key="MM_css_exclude" value="" />
+</info>

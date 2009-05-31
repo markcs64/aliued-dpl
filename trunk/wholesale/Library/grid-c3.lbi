@@ -1,0 +1,13 @@
+<div class="grid-c3">
+    <div class="col-main">
+        <div class="main-wrap">
+            <div class="test-box">main<span class="width"> 510 px</span></div>
+        </div>
+    </div>
+    <div class="col-sub">
+        <div class="test-box-big">sub<span class="width">190px</span></div>
+    </div>
+    <div class="col-extra">
+        <div class="test-box-small">extra<span class="width">230px</span></div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HTML-DEMO-LIVE-SHOW</title>
+</head>
+<body style="margin:0;">
+<select id="switch" style="width:100%;color:#305881;font-weight:bold;">
+	<option value="目录-默认.html">默认目录</option>
+	<option value="目录-二期.html">二期专用目录</option>
+</select>
+
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var parentHref = parent.location.href;
+parentHref = decodeURI(parentHref.slice(parentHref.lastIndexOf( "/")+1));
+document.getElementById("switch").value = parentHref;
+document.getElementById("switch").onchange = function(){
+	parent.location.href = this.value;
+}
+//]]>
+</script>
+</body>
+</html>

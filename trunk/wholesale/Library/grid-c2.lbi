@@ -1,0 +1,10 @@
+<div class="grid-c2">
+    <div class="col-main">
+        <div class="main-wrap">
+            <div class="test-box">main<span class="width">750px</span></div>
+        </div>
+    </div>
+    <div class="col-sub">
+        <div class="test-box-big">sub<span class="width">190px</span></div>
+    </div>
+</div>

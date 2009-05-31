@@ -1,0 +1,25 @@
+
+DPL定义
+http://www.playgoogle.com/post/68.html
+
+首先参照 Taobao DPL
+http://assets.taobaocdn.com/tbra/dpl/common/grids_layout_1.html
+
+
+
+CSS 压缩工具
+http://www.cssdrive.com/index.php/main/csscompressor/
+http://feiyu.asgard.cn/csstidy/
+
+把reset grid font layout这几类常用的集合压缩 和js一样
+这部分工作可以给apache做  先import
+
+
+HTML在线压缩
+http://tool.114la.com/jsformat.html
+
+
+
+
+
+设计模式点右键可以增加设计备注  还可以设定打开文档就跳出提示的效果  还有当前设计处于beta或者最终版状态都是可以说明设置的
