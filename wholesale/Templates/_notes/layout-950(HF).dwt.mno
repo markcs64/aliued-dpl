@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="notes" value="默认950容器&#xD;引入头尾效果&#xD;JS引用ae.js &amp; css.css&#xD;CSS引用css.css &amp; grids.css" />
+	<infoitem key="status" value="alpha" />
+	<infoitem key="showOnOpen" value="true" />
+</info>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="MM_css_include" value="http://style.alibaba.com/css/4v/grids.css" />
+	<infoitem key="MM_css_exclude" value="" />
+	<infoitem key="status" value="beta" />
+	<infoitem key="notes" value="2栏目 正常 左190 右750且自适应" />
+	<infoitem key="showOnOpen" value="true" />
+</info>

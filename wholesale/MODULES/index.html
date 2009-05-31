@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>组件浏览器</title>
+	<link type="text/css" href="./config/js-css-pic/style.css" rel="stylesheet" media="all" />
+	<script type="text/javascript" src="./config/js-css-pic/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="./config/js-css-pic/mcdropdown.js"></script>
+	<script type="text/javascript" src="./config/js-css-pic/bgiframe.js"></script>
+	<style type="text/css" media="all">
+		body{overflow:hidden;_overflow:hidden;_height:100%;height:100%;margin:0;}
+		html{overflow:hidden;height:100%;}
+	</style>
+</head>
+
+<body>
+		<div style="width:100%;">
+				<input type="text" name="category" id="category" value="" />
+		</div>
+		
+		<ul id="categorymenu" class="mcdropdown_menu">
+			<li rel="grids/">
+				grids - 全站栅格布局组合
+						<ul>
+							<li rel="grids/grid-950.html">grid-950 - demo自适应</li>
+							<li rel="grids/grid-960.html">grid-960</li>
+						</ul>
+			</li>
+            
+			<li rel="grids/">
+				boxes - 面板容器
+						<ul>
+							<li rel="boxes/boxex-圆角.html">box-圆角</li>
+						</ul>
+			</li>
+            
+		</ul>
+
+<iframe id="show-box" src="./config/welcome.html" style="width:100%;height:100%;"></iframe>
+
+<script type="text/javascript">
+	$(document).ready(function (){
+		$("#category").mcDropdown("#categorymenu",
+				{
+						 minRows: 8
+					   , maxRows: 25
+					   , targetColumnSize: 2
+													  
+					   , openFx: "slideDown"
+					   , openSpeed: 100
+					   , closeFx: "slideUp"
+					   , closeSpeed: 100
+					   , hoverOverDelay: 200
+					   , hoverOutDelay: 0
+					   , showFx: "show"
+					   , showSpeed: 200
+					   , hideFx: "hide"
+					   , hideSpeed: 0
+					   , dropShadow: true
+					   , autoHeight: true
+					   , lineHeight: 25
+
+					   , screenPadding: 20
+
+					   , allowParentSelect: true
+
+					   , delim: " >>>> "
+					   , showACOnEmptyFocus: true
+					   , valueAttr: "rel"
+					   , click : null
+					   , select: function(value,name){
+							if(value.indexOf(".htm") == -1){
+								$("#show-box").attr("src","./lib/welcome.html");
+								return;
+							}
+							$("#show-box").attr("src",value);
+					   }
+					   , init: null
+				}
+		);
+	});
+</script>
+</body>
+</html>
