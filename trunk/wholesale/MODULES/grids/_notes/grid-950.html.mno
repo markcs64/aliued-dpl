@@ -3,4 +3,6 @@
 	<infoitem key="i am" value="dark snow" />
 	<infoitem key="notes" value="试试看备注如何" />
 	<infoitem key="status" value="alpha" />
+	<infoitem key="MM_css_include" value="" />
+	<infoitem key="MM_css_exclude" value="" />
 </info>
