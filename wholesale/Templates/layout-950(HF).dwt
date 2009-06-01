@@ -10,6 +10,7 @@
 		@import url(http://style.alibaba.com/css/4v/navigat.css?c=200805251525.css); 
 		@import url(http://style.alibaba.com/css/4v/common.css?c=200803251525.css); 
 		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
+		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
     </style>
 	<!-- TemplateBeginEditable name="css" -->
 	<style type="text/css" media="all">
