@@ -82,9 +82,31 @@
         	<h1><span>Refine Search</span></h1>
             
         	<div id="refine-selected">
+                <dl class="hover" style="display:block;">
+                	<div class="content">
+                    	<dt>Catogries</dt>
+                        <dd><a href="#" class="first">Mobile Phone</a></dd>
+                        <dd><a href="#">APE</a></dd>
+                        <dd><a href="#">OGG</a></dd>
+                        <dd><a href="#">MP3</a></dd>
+                        <dd><a href="#">WMA</a></dd>
+                        <dd class="bottom-border"></dd>
+                    </div>
+                </dl>
+                
                 <dl>
                     <dt>Catogries</dt>
                     <dd><a href="#">Mobile Phone</a></dd>
+                </dl>
+                
+                <dl class="hover">
+                	<div class="content">
+                    	<dt>Memory Size</dt>
+                        <dd><a href="#" class="first">16 GB</a></dd>
+                        <dd><a href="#">32 GB</a></dd>
+                        <dd><a href="#">64 GB</a></dd>
+                        <dd class="bottom-border"></dd>
+                    </div>
                 </dl>
                 
                 <dl>
@@ -92,10 +114,11 @@
                     <dd><a href="#">16 GB</a></dd>
                 </dl>
 
+
                 <dl class="hover">
                 	<div class="content">
                         <dt>Music Format</dt>
-                        <dd><a href="#">FLAC</a></dd>
+                        <dd><a href="#" class="first">FLAC</a></dd>
                         <dd><a href="#">APE</a></dd>
                         <dd><a href="#">OGG</a></dd>
                         <dd><a href="#">MP3</a></dd>
@@ -152,9 +175,17 @@
 
 
 	get("refine-selected").init = function(){
-		YUE.on(this.getElementsByTagName("dl"),"mouseover",function(){
-			alert("");
+		YUE.on(this.getElementsByTagName("dl"),"mouseenter",function(){
+			if(YUD.hasClass(this,"hover"))return;
+			YUD.getPreviousSibling(this).style.display = "block";
 		})
+		
+		YUE.on(this.getElementsByTagName("dl"),"mouseleave",function(){
+			if(YUD.hasClass(this,"hover")){
+				this.style.display = "none";
+			}
+		})
+		
 	}
 
 	get("refine-selected").init();
