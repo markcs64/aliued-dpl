@@ -1,5 +1,10 @@
 .col-sub{
 	position:absolute;
 	left: 1089px;
-	top: 133px;
+	top: 116px;
+}
+
+
+.main-wrap{
+	height:800px;
 }

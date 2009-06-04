@@ -14,6 +14,7 @@
 	<!-- InstanceBeginEditable name="css" -->
 	<style type="text/css" media="all">
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
+        @import url(http://style.alibaba.com/css/4v/countryFlag_s16.css);
         @import url("http://style.alibaba.com/css/4v/wholesale/detail.css");
     </style>
     <!-- InstanceEndEditable -->
@@ -106,9 +107,9 @@
                 </div><!-- .detail -->
               <div class="buynow box-cGtA">
                 <div class="content">
-                  <form action="javascript:alert('test!');">
+                  <form action="javascript:alert('提交了！');">
                     Quantity: <input type="text" name="quantity" value="7" size="5" /> Lots 
-                    <input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" class="image-submit" alt="Buy Now" />
+                    <input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" class="image-submit" alt="Buy Now!" />
                     </form>
                   </div>
                 </div><!-- .buynow .box-a -->
@@ -118,7 +119,7 @@
                 <div class="time-remaining">
                 	Time Remaining: 27 Days 56 Hours 23 Minutes
                 </div>
-          </div>
+          	</div>
         </div>
       <div class="col-sub">
         <div class="test-box-big">
@@ -129,10 +130,12 @@
               <div class="image-item" style="display:none;"></div>
               <div class="image-item" style="display:none;"></div>
               <div class="image-item" style="display:none;"></div>
+              <div class="image-item" style="display:none;"></div>
               </div>
             
             <ul class="image-nav">
               <li class="image-nav-item"><img src="/images4demo/p1.jpg" /></li>
+              <li class="image-nav-item"><img src="/images4demo/p2.jpg" /></li>
               <li class="image-nav-item"><img src="/images4demo/p2.jpg" /></li>
               <li class="image-nav-item"><img src="/images4demo/p3.jpg" /></li>
               <li class="image-nav-item"><img src="/images4demo/p4.jpg" /></li>
@@ -165,16 +168,234 @@
 
 <div style="clear:both;height:50px;"></div>
 
-<div id="detail-content" class="grid-c">
-    <div class="tabsA">
+<div id="detail-options">
+    <div id="tabs-1" class="tabsA">
     	<ul>
         	<li class="current"><a href="#">Details</a></li>
         	<li><a href="#">Shipping &amp; Packaging</a></li>
         	<li><a href="#">Payment</a></li>
         </ul>
         <div class="border"></div>
-    </div><!---->
-</div><!-- #detail-content -->
+    </div>
+    <div id="tabs-1-detail">
+        <ul class="clearfix">
+        	<li>Place of Origin: Guangdong, China</li>
+            <li>Memory Size: 1G, 2G, 4G 512MB</li>
+            <li>Brand Name: Daqoqin</li>
+            <li>Color: red</li>
+            <li>Model Number: # 1234567</li>
+            <li>Music Format: MP3, WMA, AVI</li>
+        </ul>
+    </div><!-- #tabs-1-detail -->
+</div><!-- #detail-options -->
+
+<div id="shopping-packaging">
+	<h3 class="titleA">Shipping &amp; Packaging</h3>
+  	<div class="content">
+    	<div class="title clearfix"><p>Ship to: <select><option>United States</option></select></p><div class="css_flag_s css_s_us">US</div></div>
+        <div class="detail">
+            <table class="tableA">
+                <thead>
+                    <tr>
+                        <th>Supported Shipping Type</th>
+                        <th>Shipping Cost<img src="http://img.alibaba.com/images/eng/wholesale/icon/caculate.gif" class="catulate align-middle" alt="Caculate" /></th>
+                        <th>Eslimated Delivery Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>EMS</th>
+                        <td>Free Shipping(Seller Paid)</td>
+                        <td>7-12 Days</td>
+                    </tr>
+                    <tr>
+                        <th>Fedex</th>
+                        <td><b>50% OFF</b></td>
+                        <td>7-12 Days</td>
+                    </tr>
+                    <tr>
+                        <th>UPS</th>
+                        <td>
+                            <ul class="list">
+                                <li class="l1"><b>Special Rate Available</b></li>
+                                <li class="l2"><span>Quantity Range: 1-10</span><span>Shipping Cost: US$20</span></li>
+                                <li class="l3"><span>Extra Units: 2 Extra</span><span>Cost: US$2</span></li>
+                            </ul>
+                        </td>
+                        <td>7-12 Days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- .details -->
+        <div class="packaging-info">
+        	<fieldset>
+            	<legend>Packaging info</legend>
+                <ul class="clearfix">
+                	<li>Sell Type: Sell by lot(10 Pieces/Lot)</li>
+                	<li>Cross Weight: 20kg/lot</li>
+                	<li>Size(lot): 10CM*6CM*7CM</li>
+                </ul>
+            </fieldset>
+        </div><!-- .packaging-info -->
+    </div>
+</div><!-- #shopping-packaging -->
+<div id="payment">
+    <h3 class="titleA">Payment</h3>
+    <div class="content">
+    	<div class="safepay">
+            <p>Through Alibaba transactions samples or products, and only when you receive the goods, the Alibaba money will be paid to to the seller to fully protect your financial security.</p>
+            <p>Globally, 1.5 billion people have use Alipay, the daily volume of transactions more than 1 billion U.S. dollars.</p>
+            <p>Most important, it is free! Alibaba will privide you with the fastest secure method of mayment to let you trade more easily online.</p>
+            <ul class="steps clearfix">
+                <li class="s1">
+                    <span>1</span>
+                    <h6>Buyer Places Order</h6>
+                </li>
+                <li class="s2">
+                    <span>2</span>
+                    <h6>Buyer Pays Alibaba</h6>
+                </li>
+                <li class="s3">
+                    <span>3</span>
+                    <h6>Seller Ships Package</h6>
+                </li>
+                <li class="s4">
+                    <span>4</span>
+                    <h6>Buyer Checks Package</h6>
+                </li>
+                <li class="s5">
+                    <span>5</span>
+                    <h6>Alibaba Pays Seller</h6>
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+        	<table class="tableA">
+                <thead>
+                    <tr>
+                        <th width="200">Payment Method</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Pay by Credit Cards <img src="http://img.alibaba.com/images/eng/payment/pm_visa.gif" alt="VISA" />
+                        <img src="http://img.alibaba.com/images/eng/payment/pm_ma.gif" alt="Master Card" /></th>
+                        <td>Accepted</td>
+                    </tr>
+                    <tr>
+                        <th>Pay by Bank Transfer</th>
+                        <td>Accepted</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!-- .payment -->
+
+<div id="buy-feedback" class="box-a">
+
+    <div class="top">
+    	<div class="tl"></div>
+        <div class="tr"></div>
+		<div class="tc">
+        	<h2>Interested in this Proudct ?</h2>
+<!--            <span class="more"><a href="#">更多</a></span>-->
+        </div>
+    </div>
+
+    <div class="middle">
+    	<div class="ml"></div>
+        <div class="mr"></div>
+        <div class="mc clearfix">
+        	<div class="buy-direct">
+            	<h3>Buy Direct!</h3>
+                <div class="content">
+                	<form action="javascript:alert('提交了！');">
+                    	<table>
+                        	<tr>
+                            	<th><label for="bd-standard">Standard:</label> </th>
+                            	<td><select id="bd-standard">
+                                	<option>1G</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                            	<th><label for="bd-quantity">Quantity:</label> </th>
+                                <td><input type="text" id="bd-quantity" value="1" /> <span id="bd-unit">Pieces</span></td>
+                            </tr>
+                            <tr>
+                            	<td>&nbsp;</td>
+                                <td><input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" alt="Buy Now!" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div><!-- .buy-direct -->
+            
+            <div class="contact-seller dashed-border-left">
+            	<h3>Contact the Supplier</h3>
+                <span class="or">OR</span>
+                <div class="contact-info">
+                	<div class="member-photo">
+                        <img src="/images4demo/face.gif" alt="" />
+                    </div>
+                    <div class="person">Freeman Cao <img src="http://img.alibaba.com/images/eng/style/icon/add_contact.gif" alt="Add Contact" /></div>
+                	<a rel="nofollow" href="javascript:alitalkEncryptNew('8pctgRBMALMdNVs5V+7i468ZDl++n9gA','1','50136307')" id="talkId14" class="atm32" title="TradeManager">I'm online<br/>Chat now!</a>
+                </div>
+                <div class="feedback-wrap">
+                    <form action="javascript:alert('提交了！')">
+                        <textarea cols="65"></textarea>
+                        <p class="remark">Enter between 20 to 3,000 characters, English only.</p>
+                        <p class="button"><input type="submit" value="  Send  " /></p>
+                    </form>
+                </div><!-- .feedback-wrap -->
+            </div><!-- .contact-seller -->
+        </div>
+    </div><!-- .middle -->
+
+    <div class="bottom">
+    	<div class="bl"></div>
+        <div class="br"></div>
+        <div class="bc"></div>
+    </div>
+
+</div><!-- #buy-direct -->
+
+<div id="related-products">
+	<ul class="listA">
+    	<li>
+        	<a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+            <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
+            <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+            <p class="count">10 pieces / lot</p>
+        </li>
+    	<li>
+        	<a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+            <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
+            <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+            <p class="count">10 pieces / lot</p>
+        </li>
+    	<li>
+        	<a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+            <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
+            <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+            <p class="count">10 pieces / lot</p>
+        </li>
+    	<li>
+        	<a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+            <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
+            <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+            <p class="count">10 pieces / lot</p>
+        </li>
+    	<li>
+        	<a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+            <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
+            <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+            <p class="count">10 pieces / lot</p>
+        </li>
+    </ul>
+</div><!-- #related-products -->
+
 <!-- InstanceEndEditable -->
 
     <div id="footer">
