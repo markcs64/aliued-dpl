@@ -46,9 +46,8 @@
 <div id="page">
 
 <!-- #BeginLibraryItem "/Library/crumb-a.lbi" -->
-<div id="aliGlobalCrumb" class="crumb global"> <a rel="nofollow" href="http://www.alibaba.com">Home</a> &gt; <a rel="nofollow" href="http://www.alibaba.com/catalogs/0/product.html">Products</a> &gt; </div>
+<div id="aliGlobalCrumb" class="crumb global"> <a rel="nofollow" href="http://www.alibaba.com">Home</a> &gt; <a rel="nofollow" href="http://www.alibaba.com/catalogs/0/product.html">All Categories</a> &gt; Search Results for MobilePhone </div>
 <!-- #EndLibraryItem -->
-
 
   <!-- #BeginEditable "content" -->
   
@@ -56,33 +55,67 @@
   <div class="grid-c2">
     <div class="col-main">
       <div class="main-wrap">
-		<div style="magin:0; border-top:1px solid #CCCCCC; line-height:30px; height:30px;">
-        	<strong style="color:#F1641F; font:bold 14px tahoma;">1985,11</strong> results in China for <strong>Mobile Phone</strong> :
+      
+		<div id="result-info">
+        	<em>1985,11</em> results in China for <strong>Mobile Phone</strong> :
         </div>
-        <div style="border-top:1px solid #E6E6E6; padding:10px; font:normal 11px tahoma;">
-        	Quantity: <input style="font-size:10px; margin:0 5px; width:80px;" /> Price Per Unit: US$ 
+
+        <div id="filter">
+        	<form id="filterForm" name="filterForm" method="get" action="target-action">
+        		Quantity: <input id="filter-quantity" /> Price Per Unit: US$ <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                <input id="filter-submit" type="submit" value="" />
+                China Province:
+                <select>
+					<option>Select</option>
+                </select>
+            </form>
         </div>
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p><br />
-          <br />
-        </p>
+        
+        <ul id="toolbar">
+            <li class="mode mode-list">
+                View: <a class="list-mode" href="#"></a> <a class="thumb-mode" href="#"></a>
+            </li>
+            <li class="shipping">
+            	Free Shipping to : 
+                <select id="free-shipping-selector">
+					<option>Select</option>
+                </select>
+            </li>
+            <li class="sort">
+            	Sory by : 
+                <select id="sort-selector">
+					<option>Select</option>
+                </select>
+            </li>
+            <li class="left-corner"></li><li class="right-corner"></li>
+        </ul>
+        
+
+
+		<div id="notice-info">
+			All Suppliers are verified by Alibaba.com
+        </div>
+
+        <div id="list-items" style="padding:10px; border-bottom:1px solid #D4D4D4;" class="clearfix">
+            <div class="img" style="border:1px solid #D4D4D4; float:left;">
+                <img src="http://style.alibaba.com/images4demo/for-list-show.gif" />
+            </div>
+        </div>
+
+
       </div>
     </div>
+    
+    
     <div class="col-sub">
     
 		<div id="refine-search">
         	<h1><span>Refine Search</span></h1>
             
         	<div id="refine-selected">
-                <dl class="hover" style="display:block;">
+            
+                <dl class="hover">
                 	<div class="content">
                     	<dt>Catogries</dt>
                         <dd><a href="#" class="first">Mobile Phone</a></dd>
@@ -131,8 +164,9 @@
                     <dt>Music Format</dt>
                     <dd><a href="#">FLAC</a></dd>
                 </dl>
-
                 
+                <!-- ie6 fix clear -->
+                <div style="clear:both"></div>
             </div>
             
             
@@ -162,7 +196,7 @@
                     <dd><a class="view-more" href="#">View More</a></dd>
                 </dl>
             </div>
-
+			
         </div>
         
     </div>
@@ -170,26 +204,126 @@
   
 
 
-<script>
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
 
-
-
-	get("refine-selected").init = function(){
-		YUE.on(this.getElementsByTagName("dl"),"mouseenter",function(){
-			if(YUD.hasClass(this,"hover"))return;
-			YUD.getPreviousSibling(this).style.display = "block";
-		})
-		
-		YUE.on(this.getElementsByTagName("dl"),"mouseleave",function(){
-			if(YUD.hasClass(this,"hover")){
-				this.style.display = "none";
-			}
-		})
-		
+	AE.namespace('AE.run.wholesale.list');
+	
+	AE.run.wholesale.list.refineSearch = function(config){
+		this.config = {
+			// refine-selected 目标容器
+			refineSelected	:	get("refine-selected"),
+			showFloatBoxTimeout : 0,
+			hideFloatBoxTimeout : 0
+		};
+		this.showFloatBoxTimeoutId = "";
+		this.hideFloatBoxTimeoutId = "";
+		this.lastFloatBox = null
 	}
 
-	get("refine-selected").init();
-	
+	AE.run.wholesale.list.refineSearch.prototype = {
+		
+		// 服务防冒泡重写事件
+		isParent : function(ev,el){
+			var parent = ev.relatedTarget;
+			while ( parent && parent != el ) try { parent = parent.parentNode; } catch(error) { parent = el; }
+			return(parent != el);
+		},
+
+		// 防冒泡事件：鼠标滑过
+		onEnter : function(target,enterFunction,args,scope){
+			var _self = this;var config = this.config;
+			if(AE.bom.isIE){ //ie特有的mouseenter&mouseleave
+				YUE.on(target, 'mouseenter', enterFunction, args, scope);
+			}else{
+				YUE.on(target, 'mouseover', function(ev,args){
+						if(!_self.isParent(ev,this))return;		// target 必须
+
+						enterFunction.call(_self, ev, args);
+					},args, scope);
+			}
+		},
+		
+		// 防冒泡事件：鼠标离开
+		onLeave : function(target,leaveFunction,args,scope){
+			var _self = this;var config = this.config;
+			if(AE.bom.isIE){ //ie特有的mouseenter&mouseleave
+				YUE.on(target, 'mouseleave', leaveFunction, args , scope);
+			}else{
+				YUE.on(target, 'mouseout', function(ev,args){
+						if(!_self.isParent(ev,this))return;		// target 必须
+						leaveFunction.call(_self, ev, args);
+					},args);
+			}
+		},
+
+  	// 显示target对应浮动层，正常情况是它的前一个节点
+  	showFloatBox : function(ev,args){
+  			if(this.config.lastFloatBox){this.config.lastFloatBox.style.display = "none";}
+				var hoverBody = YUD.getPreviousSibling(args.target);
+				if(!YUD.hasClass(hoverBody,"hover"))return;
+				hoverBody.style.display = "block";
+				this.config.lastFloatBox = hoverBody;
+  	},
+
+  	// 隐藏target对应浮动层，正常情况是它的前一个节点
+  	hideFloatBox : function(ev,args){
+  			var hoverBody = args.target;
+				hoverBody.style.display = "none";
+  	},
+
+		showFloatBoxDelay : function(ev,args){
+				var _self = this;var config = this.config;
+				if(_self.showFloatBoxTimeoutId){clearTimeout(_self.showFloatBoxTimeoutId)};
+				_self.showFloatBoxTimeoutId = setTimeout(function(){
+					_self.showFloatBox(ev,args);
+				},config.showFloatBoxTimeout);
+		},
+
+		hideFloatBoxDelay : function(ev,args){
+				var _self = this;var config = this.config;
+				if(_self.hideFloatBoxTimeoutId){clearTimeout(_self.hideFloatBoxTimeoutId)};
+				_self.hideFloatBoxTimeoutId = setTimeout(function(){
+					_self.hideFloatBox(ev,args);
+				},config.hideFloatBoxTimeout);
+
+		},
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 初始化
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		init : function(customConfig){
+				// 合并配置
+				this.config = YL.merge(this.config,customConfig||{});
+				// 定义_self
+				var _self = this;var config = this.config;
+				var	items = config.refineSelected.getElementsByTagName("dl");
+
+				for(var i=0;i<items.length; i++){
+						var item = items[i];
+						if(YUD.hasClass(item,"hover")){
+							_self.onLeave(item,_self.hideFloatBoxDelay,{target:item},_self);
+						}else{
+							_self.onEnter(item,_self.showFloatBoxDelay,{target:item},_self);
+						}
+				}
+				
+				if(AE.bom.isIE){ CollectGarbage(); }
+		}
+
+	}
+
+
+// 定义 & 初始化
+var refineSearch = new AE.run.wholesale.list.refineSearch();
+refineSearch.init({
+	refineSelected	:	get("refine-selected")
+});
+
+
+
+//]]>
 </script>
 
 
