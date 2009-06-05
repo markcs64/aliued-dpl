@@ -22,8 +22,80 @@
     <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
     
     <!-- InstanceBeginEditable name="js" -->
-<!--    <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-	<script language="JavaScript" type="text/javascript">
+    <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
+    <script type="text/javascript">
+		AE.widget.selectTable = function() {
+			this.defConfig = {
+				selectElementClass : 'standard-select',   // 联动下拉框 class
+				unitClass          : 'unit',              // 单位　Element class
+				quantityClass      : 'standard-quantity', // 数量 input class
+				tableClass         : 'standard-tables'
+			};
+			this.config = this.defConfig;
+		};
+		AE.widget.selectTable.prototype = {
+			init : function() {
+				this.se = YUD.getElementsByClassName(this.config.selectElementClass, 'select', 'page');
+				this.ue = YUD.getElementsByClassName(this.config.unitClass, 'span', 'page');
+				this.qe = YUD.getElementsByClassName(this.config.quantityClass, 'input', 'page');
+				this.setValue();
+			},
+			setValue : function() {
+				var o = this.se[this.se.length-1];
+				var q = o[o.selectedIndex].getAttribute('quantity');
+				
+				// 联动 select
+				for(var i=0, l=this.se.length; i<l; i++) {
+					if(this.se[i] == o) continue;
+					this.se[i].value = o.value;
+				}
+				
+				// 联动 tables
+				
+			},
+			setUnit : function() {
+				var o = this.selectElements[this.selectElements.length-1];
+				var q = o[o.selectedIndex].getAttribute('quantity');
+				for(var i=0, l=this.inputElements.length; i<l; i++) {
+					alert(q);
+					this.inputElements[i].value = q;
+					//this.unitElements[i].value = this.selectElements.options[this.selectElements[this.selectElements.length-1].selectedIndex];
+				}
+			}
+		};
+		
+		YUE.onDOMReady(function(){
+			
+			var st = new AE.widget.selectTable();
+			st.init();
+
+			// 价目表更新
+/*			var priceTable = {
+				selects : [
+						   get('standard-1'),
+						   get('standard-2')
+						],
+				tables : get('standard-tables').getElementsByTagName('table')
+			};
+			priceTable.current = priceTable.tables[0];
+			YUE.on( priceTable.selects, 'change', function(){
+				//alert( this.selectedIndex );
+				//if(this.selectedIndex == priceTable.current) return;
+				priceTable.tables[this.selectedIndex].style.display = '';
+				if(priceTable.current)
+					priceTable.current.style.display = 'none';
+				priceTable.current = priceTable.tables[this.selectedIndex];
+			});
+			
+			var tabs = get('tabs').getElementsByTagName('li');
+			var contents = {};
+			YUE.on( tabs, 'click', function(e){
+				if( YUD.hasClass( this, 'current') ) return false;
+				
+			});*/
+		});
+	</script>
+<!--	<script language="JavaScript" type="text/javascript">
     try{document.domain="alibaba.com";}catch(E){}
     </script>-->
     <!-- InstanceEndEditable -->
@@ -62,10 +134,15 @@
                 <span class="p2">US$2050.2 - 3180.0 / Pieces</span>
                 <span class="p3">Min. order : 1000 lots</span>
               </p>
-              <p class="standard">Product Optiors: <select>
-                <option>1G</option>
+<!--          单卖情况下显示：    <p class="quantity single dashed-border-bottom clearfix">
+                <span class="p3">Min. order : 1000 lots</span>
+              </p>-->
+              <p class="standard">Product Optiors: <select id="standard-1" class="standard-select">
+                    <option value="1" quantity="10">1G</option>
+                    <option value="2" quantity="1">2G</option>
+                    <option value="3" quantity="3">3G</option>
                 </select></p>
-              <div class="detail">
+              <div id="standard-tables" class="detail">
                 <table class="table-list-a">
                   <thead>
                     <tr>
@@ -102,11 +179,79 @@
                       </tr>
                     </tbody>
                   </table>
+                <table class="table-list-a" style="display:none;">
+                  <thead>
+                    <tr>
+                      <th><p>Quantity Range (Lot)</p></th>
+                      <th><p>Price (Per Lot)</p></th>
+                      <th><p>Processing Time (Days)</p></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><p>3-FFFFFFFFFFFFF5</p></td>
+                      <td><p>US $fdsafdsaf 58.00</p></td>
+                      <td><p>5dfbagsd</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>1dsavavdv1-20</p></td>
+                      <td><p>USvasvsda $ 50.00</p></td>
+                      <td><p>1vdsafdsaf4</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>21dsafdsav50</p></td>
+                      <td><p>USfdsafdsa $ 48.00</p></td>
+                      <td><p>1sdaf4</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>51safsdaf-100</p></td>
+                      <td><p>UfsdafdsaS $ 47.00</p></td>
+                      <td><p>1fdasfdsaf4</p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <table class="table-list-a" style="display:none;">
+                  <thead>
+                    <tr>
+                      <th><p>Quantity Range (Lot)</p></th>
+                      <th><p>Price (Per Lot)</p></th>
+                      <th><p>Processing Time (Days)</p></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><p>FDSAF</p></td>
+                      <td><p>FDSAFSDAF</p></td>
+                      <td><p>GFSGFDG</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>HFDSGFG</p></td>
+                      <td><p>GHFDGFSAG</p></td>
+                      <td><p>HFSDGFAG</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>HFGFASGDS</p></td>
+                      <td><p>UGHFDGFD</p></td>
+                      <td><p>1GSAGSDAG</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>GDSAG</p></td>
+                      <td><p>GSAGSDA</p></td>
+                      <td><p>GSA</p></td>
+                      </tr>
+                    <tr>
+                      <td><p>GDASGS</p></td>
+                      <td><p>JHJFDJ/td>
+                      <td><p>1FDHG4</p></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div><!-- .detail -->
               <div class="buynow box-cGtA">
                 <div class="content">
                   <form action="javascript:alert('提交了！');">
-                    Quantity: <input type="text" name="quantity" value="7" size="5" /> Lots 
+                    <label for="quantity-1">Quantity:</label>
+                    <input type="text" name="quantity" id="quantity-1" value="1" size="5" class="standard-quantity" /> <span class="unit">Lot</span>
                     <input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" class="image-submit" alt="Buy Now!" />
                     </form>
                   </div>
@@ -222,22 +367,26 @@
 
 <div id="tabs" class="tabs-a">
     <ul>
-        <li class="current"><a href="#">Details</a></li>
-        <li><a href="#">Shipping &amp; Packaging</a></li>
-        <li><a href="#">Payment</a></li>
+        <li class="current"><a href="javascript:void(0)">Product Details</a></li>
+        <li><a href="javascript:void(0)">Shipping &amp; Packaging</a></li>
+        <li><a href="javascript:void(0)">Payment Terms</a></li>
     </ul>
     <div class="border"></div>
 </div>
 
 <div id="tab-details">
-    <ul class="clearfix">
-        <li>Place of Origin: Guangdong, China</li>
-        <li>Memory Size: 1G, 2G, 4G 512MB</li>
-        <li>Brand Name: Daqoqin</li>
-        <li>Color: red</li>
-        <li>Model Number: # 1234567</li>
-        <li>Music Format: MP3, WMA, AVI</li>
-    </ul>
+    <table>
+    	<tr>
+        	<td>Place of Origin: Guangdong, China</td>
+        	<td>Memory Size: 1G, 2G, 4G 512MB</td>
+        	<td>Brand Name: Daqoqin</td>
+        </tr>
+    	<tr>
+        	<td>Color: red</td>
+        	<td>Model Number: # 1234567</td>
+        	<td>Music Format: MP3, WMA, AVI</td>
+        </tr>
+    </table>
 </div><!-- #tab-details -->
 
 
@@ -296,7 +445,8 @@
     <div class="content">
     	<div class="safepay">
             <p>
-            	
+            	Alibaba Safepay is the safer, faster and easier way to pay online.<br />
+                Safepay tracks your order and releases payment to supplier only ofter you confirm delivery. It's also <strong>FREE</strong>!
             </p>
             <ul class="steps clearfix">
                 <li class="s1">
@@ -345,13 +495,13 @@
     </div>
 </div><!-- #tab-p-o -->
 
-<div id="buy-feedback" class="box-tA">
+<div id="tab-buy" class="box-tA">
 
     <div class="top">
     	<div class="tl"></div>
         <div class="tr"></div>
 		<div class="tc">
-        	<h2>Interested in this Proudct ?</h2>
+        	<h2>Interested in this Proudct?</h2>
 <!--            <span class="more"><a href="#">更多</a></span>-->
         </div>
     </div>
@@ -360,20 +510,22 @@
     	<div class="ml"></div>
         <div class="mr"></div>
         <div class="mc clearfix">
-        	<div class="buy-direct">
-            	<h3>Buy Direct!</h3>
+        	<div class="buy-now">
+            	<h3>Buy Now</h3>
                 <div class="content">
                 	<form action="javascript:alert('提交了！');">
                     	<table>
                         	<tr>
-                            	<th><label for="bd-standard">Standard:</label> </th>
-                            	<td><select id="bd-standard">
-                                	<option>1G</option>
+                            	<th><label for="standard-2">Standard:</label> </th>
+                            	<td><select id="standard-2" class="standard-select">
+                                    <option quantity="10" value="1">1G</option>
+                                    <option quantity="1" value="2">2G</option>
+                                    <option quantity="3" value="3">3G</option>
                                 </select></td>
                             </tr>
                             <tr>
                             	<th><label for="bd-quantity">Quantity:</label> </th>
-                                <td><input type="text" id="bd-quantity" value="1" /> <span id="bd-unit">Pieces</span></td>
+                                <td><input type="text" id="bd-quantity" value="1" class="standard-quantity" /> <span class="unit">Lot</span></td>
                             </tr>
                             <tr>
                             	<td>&nbsp;</td>
@@ -382,7 +534,7 @@
                         </table>
                     </form>
                 </div>
-            </div><!-- .buy-direct -->
+            </div><!-- .buy-now -->
             
             <div class="contact-seller dashed-border-left">
             	<h3>Contact the Supplier</h3>
@@ -411,9 +563,9 @@
         <div class="bc"></div>
     </div>
 
-</div><!-- #buy-direct -->
+</div><!-- #tab-buy -->
 
-<div id="related-products" class="box-tA box-tAcG">
+<div id="tab-r-p" class="box-tA box-tAcG">
 	<div class="top">
     	<div class="tl"></div>
         <div class="tr"></div>
@@ -467,7 +619,7 @@
             <div class="br"></div>
             <div class="bc"></div>
         </div>
-    </div>
+    </div><!-- #tab-r-p -->
 
 </div><!-- #related-products -->
 
