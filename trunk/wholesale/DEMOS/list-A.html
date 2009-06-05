@@ -96,13 +96,11 @@
 
 		<ul id="list-items">
         
-            <li id="list-item" class="clearfix">
-                <!-- img -->
+            <li class="list-item clearfix">
                 <div class="img">
                     <img src="http://style.alibaba.com/images4demo/for-list-show.gif" />
                 </div>
                 
-                <!-- detail -->
                 <div class="detail">
                     <a class="title" href="#">i wanna mobile phone , i like M8.</a>
                     <span class="time-remark">Time Remaining: 27days</span>
@@ -120,27 +118,51 @@
                     </span>
                 </div>
                 
-                <!-- info -->
                 <div class="info">
                     <span class="unit-price">
-                        us$<em class="font-price-sLcR">123 - 321</em> / Piece
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
                     </span>
                     <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
                         us$26.00 - 40.00 / Piece
                     </span>
                     <span class="min-order">20 Pieces</span>
-                    <a class="buy-now" href="#">
-                        <img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" />
-                    </a>
+                    <a class="buy-now" href="#"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
                     <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
                     	I'm online<br/>Chat now!
                     </a>
-                    
                 </div>
             </li>
             
-            
 		</ul>
+
+
+        <div id="pagination-bottom" class="pagination">
+            <div class="pos-right">
+            	<span class="page-start"></span>
+            	<span class="page-cur">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span class="page-break">...</span>
+                <a href="">99</a>
+                <a href="">100</a>
+                <a class="page-next" href="#">Next</a>
+
+<style>
+
+</style>
+
+                <span class="page-skip" style="float:left; margin-left:5px; _margin-top:-2px;">
+                    <form id="pagination-bottom-form" onsubmit="return check()" action="target" method="get">
+                        Go to Page
+                        <input id="pagination-bottom-input" class="pagination-input" type="text" value="" />
+                        <input id="pagination-bottom-submit" class="pagination-submit" type="submit" value="" />
+                    </form>
+                </span>
+            </div>
+        </div>
+
 
       </div>
     </div>
@@ -152,7 +174,7 @@
 	        	<h1><span>Refine Search</span></h1>
 	            
 	        	<div id="refine-selected">
-	            
+                
 	                <dl class="hover">
 	                	<div class="content">
 	                    	<dt>Catogries</dt>
@@ -203,7 +225,6 @@
 	                    <dd><a href="#">FLAC</a></dd>
 	                </dl>
 	                
-	                <!-- ie6 fix clear -->
 	                <div style="clear:both"></div>
 	            </div>
 	            
@@ -243,9 +264,7 @@
         <script language="JavaScript" type="text/javascript">
         //<![CDATA[
             var refineSearch = new AE.run.wholesale.list.refineSearch();
-            refineSearch.init({
-                refineSelected	:	get("refine-selected")
-            });
+            refineSearch.init({refineSelected	:	get("refine-selected")});
         //]]>
         </script>
 			
