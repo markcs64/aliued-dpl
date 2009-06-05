@@ -23,9 +23,6 @@
     
     <!-- #BeginEditable "js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-	<script language="JavaScript" type="text/javascript">
-    try{document.domain="alibaba.com";}catch(E){}
-    </script>
     <!-- #EndEditable -->
     
     <base href="http://www.alibaba.com">
@@ -70,8 +67,7 @@
                 </select>
             </form>
         </div>
-        
-        
+
         <ul id="toolbar">
             <li class="mode mode-list">
                 View: <a class="list-mode" href="#"></a> <a class="thumb-mode" href="#"></a>
@@ -85,24 +81,66 @@
             <li class="sort">
             	Sory by : 
                 <select id="sort-selector">
-					<option>Select</option>
+                	<option>Best match</option>
+					<option>Time Remaining (End Date)</option>
+                    <option>Price (Lowest)</option>
+                    <option>Date Added (Newest)</option>
                 </select>
             </li>
             <li class="left-corner"></li><li class="right-corner"></li>
         </ul>
-        
-
 
 		<div id="notice-info">
 			All Suppliers are verified by Alibaba.com
         </div>
 
-        <div id="list-items" style="padding:10px; border-bottom:1px solid #D4D4D4;" class="clearfix">
-            <div class="img" style="border:1px solid #D4D4D4; float:left;">
-                <img src="http://style.alibaba.com/images4demo/for-list-show.gif" />
-            </div>
-        </div>
-
+		<ul id="list-items">
+        
+            <li id="list-item" class="clearfix">
+                <!-- img -->
+                <div class="img">
+                    <img src="http://style.alibaba.com/images4demo/for-list-show.gif" />
+                </div>
+                
+                <!-- detail -->
+                <div class="detail">
+                    <a class="title" href="#">i wanna mobile phone , i like M8.</a>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+                <!-- info -->
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123 - 321</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">20 Pieces</span>
+                    <a class="buy-now" href="#">
+                        <img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" />
+                    </a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                    
+                </div>
+            </li>
+            
+            
+		</ul>
 
       </div>
     </div>
@@ -110,221 +148,113 @@
     
     <div class="col-sub">
     
-		<div id="refine-search">
-        	<h1><span>Refine Search</span></h1>
-            
-        	<div id="refine-selected">
-            
-                <dl class="hover">
-                	<div class="content">
-                    	<dt>Catogries</dt>
-                        <dd><a href="#" class="first">Mobile Phone</a></dd>
-                        <dd><a href="#">APE</a></dd>
-                        <dd><a href="#">OGG</a></dd>
-                        <dd><a href="#">MP3</a></dd>
-                        <dd><a href="#">WMA</a></dd>
-                        <dd class="bottom-border"></dd>
-                    </div>
-                </dl>
+			<div id="refine-search">
+	        	<h1><span>Refine Search</span></h1>
+	            
+	        	<div id="refine-selected">
+	            
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Catogries</dt>
+	                        <dd><a href="#" class="first">Mobile Phone</a></dd>
+	                        <dd><a href="#">APE</a></dd>
+	                        <dd><a href="#">OGG</a></dd>
+	                        <dd><a href="#">MP3</a></dd>
+	                        <dd><a href="#">WMA</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Catogries</dt>
+	                    <dd><a href="#">Mobile Phone</a></dd>
+	                </dl>
+	                
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Memory Size</dt>
+	                        <dd><a href="#" class="first">16 GB</a></dd>
+	                        <dd><a href="#">32 GB</a></dd>
+	                        <dd><a href="#">64 GB</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Memory Size</dt>
+	                    <dd><a href="#">16 GB</a></dd>
+	                </dl>
+	
+	
+	                <dl class="hover">
+	                	<div class="content">
+	                        <dt>Music Format</dt>
+	                        <dd><a href="#" class="first">FLAC</a></dd>
+	                        <dd><a href="#">APE</a></dd>
+	                        <dd><a href="#">OGG</a></dd>
+	                        <dd><a href="#">MP3</a></dd>
+	                        <dd><a href="#">WMA</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="#">FLAC</a></dd>
+	                </dl>
+	                
+	                <!-- ie6 fix clear -->
+	                <div style="clear:both"></div>
+	            </div>
+	            
+	            
+	            <div id="refine-list">
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="#">FLAC</a> (1985)</dd>
+	                    <dd><a href="#">APE</a> (1129)</dd>
+	                    <dd><a href="#">OGG</a>	(49)</dd>
+	                    <dd><a href="#">MP3</a> (47)</dd>
+	                    <dd><a class="view-more" href="#">View More</a></dd>
+	                </dl>
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="#">FLAC</a> (1985)</dd>
+	                    <dd><a href="#">APE</a> (1129)</dd>
+	                    <dd><a href="#">OGG</a>	(49)</dd>
+	                    <dd><a href="#">MP3</a> (47)</dd>
+	                    <dd><a class="view-more" href="#">View More</a></dd>
+	                </dl>
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="#">FLAC</a> (1985)</dd>
+	                    <dd><a href="#">APE</a> (1129)</dd>
+	                    <dd><a href="#">OGG</a>	(49)</dd>
+	                    <dd><a href="#">MP3</a> (47)</dd>
+	                    <dd><a class="view-more" href="#">View More</a></dd>
+	                </dl>
+	            </div>
                 
-                <dl>
-                    <dt>Catogries</dt>
-                    <dd><a href="#">Mobile Phone</a></dd>
-                </dl>
                 
-                <dl class="hover">
-                	<div class="content">
-                    	<dt>Memory Size</dt>
-                        <dd><a href="#" class="first">16 GB</a></dd>
-                        <dd><a href="#">32 GB</a></dd>
-                        <dd><a href="#">64 GB</a></dd>
-                        <dd class="bottom-border"></dd>
-                    </div>
-                </dl>
                 
-                <dl>
-                    <dt>Memory Size</dt>
-                    <dd><a href="#">16 GB</a></dd>
-                </dl>
+	    </div>
 
-
-                <dl class="hover">
-                	<div class="content">
-                        <dt>Music Format</dt>
-                        <dd><a href="#" class="first">FLAC</a></dd>
-                        <dd><a href="#">APE</a></dd>
-                        <dd><a href="#">OGG</a></dd>
-                        <dd><a href="#">MP3</a></dd>
-                        <dd><a href="#">WMA</a></dd>
-                        <dd class="bottom-border"></dd>
-                    </div>
-                </dl>
-                
-                <dl>
-                    <dt>Music Format</dt>
-                    <dd><a href="#">FLAC</a></dd>
-                </dl>
-                
-                <!-- ie6 fix clear -->
-                <div style="clear:both"></div>
-            </div>
-            
-            
-            <div id="refine-list">
-                <dl>
-                    <dt>Music Format</dt>
-                    <dd><a href="#">FLAC</a> (1985)</dd>
-                    <dd><a href="#">APE</a> (1129)</dd>
-                    <dd><a href="#">OGG</a>	(49)</dd>
-                    <dd><a href="#">MP3</a> (47)</dd>
-                    <dd><a class="view-more" href="#">View More</a></dd>
-                </dl>
-                <dl>
-                    <dt>Music Format</dt>
-                    <dd><a href="#">FLAC</a> (1985)</dd>
-                    <dd><a href="#">APE</a> (1129)</dd>
-                    <dd><a href="#">OGG</a>	(49)</dd>
-                    <dd><a href="#">MP3</a> (47)</dd>
-                    <dd><a class="view-more" href="#">View More</a></dd>
-                </dl>
-                <dl>
-                    <dt>Music Format</dt>
-                    <dd><a href="#">FLAC</a> (1985)</dd>
-                    <dd><a href="#">APE</a> (1129)</dd>
-                    <dd><a href="#">OGG</a>	(49)</dd>
-                    <dd><a href="#">MP3</a> (47)</dd>
-                    <dd><a class="view-more" href="#">View More</a></dd>
-                </dl>
-            </div>
+		<script language="JavaScript" type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/list.js"></script>
+        <script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+            var refineSearch = new AE.run.wholesale.list.refineSearch();
+            refineSearch.init({
+                refineSelected	:	get("refine-selected")
+            });
+        //]]>
+        </script>
 			
-        </div>
-        
     </div>
   </div>
   
 
 
-<script language="JavaScript" type="text/javascript">
-//<![CDATA[
 
-	AE.namespace('AE.run.wholesale.list');
-	
-	AE.run.wholesale.list.refineSearch = function(config){
-		this.config = {
-			// refine-selected 目标容器
-			refineSelected	:	get("refine-selected"),
-			showFloatBoxTimeout : 0,
-			hideFloatBoxTimeout : 0
-		};
-		this.showFloatBoxTimeoutId = "";
-		this.hideFloatBoxTimeoutId = "";
-		this.lastFloatBox = null
-	}
-
-	AE.run.wholesale.list.refineSearch.prototype = {
-		
-		// 服务防冒泡重写事件
-		isParent : function(ev,el){
-			var parent = ev.relatedTarget;
-			while ( parent && parent != el ) try { parent = parent.parentNode; } catch(error) { parent = el; }
-			return(parent != el);
-		},
-
-		// 防冒泡事件：鼠标滑过
-		onEnter : function(target,enterFunction,args,scope){
-			var _self = this;var config = this.config;
-			if(AE.bom.isIE){ //ie特有的mouseenter&mouseleave
-				YUE.on(target, 'mouseenter', enterFunction, args, scope);
-			}else{
-				YUE.on(target, 'mouseover', function(ev,args){
-						if(!_self.isParent(ev,this))return;		// target 必须
-
-						enterFunction.call(_self, ev, args);
-					},args, scope);
-			}
-		},
-		
-		// 防冒泡事件：鼠标离开
-		onLeave : function(target,leaveFunction,args,scope){
-			var _self = this;var config = this.config;
-			if(AE.bom.isIE){ //ie特有的mouseenter&mouseleave
-				YUE.on(target, 'mouseleave', leaveFunction, args , scope);
-			}else{
-				YUE.on(target, 'mouseout', function(ev,args){
-						if(!_self.isParent(ev,this))return;		// target 必须
-						leaveFunction.call(_self, ev, args);
-					},args);
-			}
-		},
-
-  	// 显示target对应浮动层，正常情况是它的前一个节点
-  	showFloatBox : function(ev,args){
-  			if(this.config.lastFloatBox){this.config.lastFloatBox.style.display = "none";}
-				var hoverBody = YUD.getPreviousSibling(args.target);
-				if(!YUD.hasClass(hoverBody,"hover"))return;
-				hoverBody.style.display = "block";
-				this.config.lastFloatBox = hoverBody;
-  	},
-
-  	// 隐藏target对应浮动层，正常情况是它的前一个节点
-  	hideFloatBox : function(ev,args){
-  			var hoverBody = args.target;
-				hoverBody.style.display = "none";
-  	},
-
-		showFloatBoxDelay : function(ev,args){
-				var _self = this;var config = this.config;
-				if(_self.showFloatBoxTimeoutId){clearTimeout(_self.showFloatBoxTimeoutId)};
-				_self.showFloatBoxTimeoutId = setTimeout(function(){
-					_self.showFloatBox(ev,args);
-				},config.showFloatBoxTimeout);
-		},
-
-		hideFloatBoxDelay : function(ev,args){
-				var _self = this;var config = this.config;
-				if(_self.hideFloatBoxTimeoutId){clearTimeout(_self.hideFloatBoxTimeoutId)};
-				_self.hideFloatBoxTimeoutId = setTimeout(function(){
-					_self.hideFloatBox(ev,args);
-				},config.hideFloatBoxTimeout);
-
-		},
-
-
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// 初始化
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		init : function(customConfig){
-				// 合并配置
-				this.config = YL.merge(this.config,customConfig||{});
-				// 定义_self
-				var _self = this;var config = this.config;
-				var	items = config.refineSelected.getElementsByTagName("dl");
-
-				for(var i=0;i<items.length; i++){
-						var item = items[i];
-						if(YUD.hasClass(item,"hover")){
-							_self.onLeave(item,_self.hideFloatBoxDelay,{target:item},_self);
-						}else{
-							_self.onEnter(item,_self.showFloatBoxDelay,{target:item},_self);
-						}
-				}
-				
-				if(AE.bom.isIE){ CollectGarbage(); }
-		}
-
-	}
-
-
-// 定义 & 初始化
-var refineSearch = new AE.run.wholesale.list.refineSearch();
-refineSearch.init({
-	refineSelected	:	get("refine-selected")
-});
-
-
-
-//]]>
-</script>
 
 
 
