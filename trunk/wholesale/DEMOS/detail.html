@@ -29,7 +29,7 @@
 				selectElementClass : 'standard-select',   // 联动下拉框 class
 				unitClass          : 'unit',              // 单位　Element class
 				quantityClass      : 'standard-quantity', // 数量 input class
-				tableClass         : 'standard-tables'
+				tableClass         : 'standard-tables'    // 价目表 class
 			};
 			this.config = this.defConfig;
 		};
@@ -38,11 +38,27 @@
 				this.se = YUD.getElementsByClassName(this.config.selectElementClass, 'select', 'page');
 				this.ue = YUD.getElementsByClassName(this.config.unitClass, 'span', 'page');
 				this.qe = YUD.getElementsByClassName(this.config.quantityClass, 'input', 'page');
-				this.setValue();
+				this.te = YUD.getElementsByClassName(this.config.tableClass, 'table', 'page');
+				for(var i=0, l=this.te.length; i<l; i++) {
+					if(i == 0) {
+						this.te[i].style.display = '';
+						this.currentTable = this.te[i];
+					} else {
+						this.te[i].style.display = 'none';
+					}
+				}
+				var _this = this;
+				YUE.on(this.se, 'change', function() {_this.setValue(this);});
+				this.setValue(this.se[this.se.length-1]);
+				
+				// input
+				YUE.on(this.ue, 'click', function() {
+												  	alert('fdf');
+												  });
 			},
-			setValue : function() {
-				var o = this.se[this.se.length-1];
-				var q = o[o.selectedIndex].getAttribute('quantity');
+			setValue : function(o) { // o : 下拉框
+				var si = o.selectedIndex;
+				var q = o[si].getAttribute('quantity');
 				
 				// 联动 select
 				for(var i=0, l=this.se.length; i<l; i++) {
@@ -51,15 +67,21 @@
 				}
 				
 				// 联动 tables
+				if(this.currentTable != this.te[si]) {
+					this.te[si].style.display = '';//alert(this.te[si].id);
+					this.currentTable.style.display = 'none';
+					this.currentTable = this.te[si];
+				}
 				
-			},
-			setUnit : function() {
-				var o = this.selectElements[this.selectElements.length-1];
-				var q = o[o.selectedIndex].getAttribute('quantity');
-				for(var i=0, l=this.inputElements.length; i<l; i++) {
-					alert(q);
-					this.inputElements[i].value = q;
-					//this.unitElements[i].value = this.selectElements.options[this.selectElements[this.selectElements.length-1].selectedIndex];
+				// 联动 input
+				for(i=0, l=this.qe.length; i<l; i++) {
+					this.qe[i].value = o[si].getAttribute('quantity');
+				}
+				
+				// 联动 unit
+				for(i=0, l=this.ue.length; i<l; i++) {
+					var c = o[si].getAttribute('quantity');
+					this.ue[i].innerHTML = c > 1 ? 'Lots' : 'Lot';
 				}
 			}
 		};
@@ -143,7 +165,7 @@
                     <option value="3" quantity="3">3G</option>
                 </select></p>
               <div id="standard-tables" class="detail">
-                <table class="table-list-a">
+                <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
                       <th><p>Quantity Range (Lot)</p></th>
@@ -179,7 +201,7 @@
                       </tr>
                     </tbody>
                   </table>
-                <table class="table-list-a" style="display:none;">
+                <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
                       <th><p>Quantity Range (Lot)</p></th>
@@ -210,7 +232,7 @@
                       </tr>
                     </tbody>
                   </table>
-                <table class="table-list-a" style="display:none;">
+                <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
                       <th><p>Quantity Range (Lot)</p></th>
