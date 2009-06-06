@@ -23,7 +23,6 @@
     
     <!-- #BeginEditable "js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-    <script language="JavaScript" type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/list.js"></script>
     <!-- #EndEditable -->
     
     <!--
@@ -71,9 +70,8 @@
             </form>
         </div>
 
-
         <ul id="toolbar">
-            <li class="mode mode-list">
+            <li id="view-mode" class="mode mode-thumb">
                 View: <a id="view-list-mode" class="list-mode" href="list-A.html"></a>
                 <a id="view-thumb-mode" class="thumb-mode" href="list-B.html"></a>
             </li>
@@ -99,15 +97,13 @@
 			All Suppliers are verified by Alibaba.com
         </div>
 
-		<ul id="list-items" class="clearfix">
+		<ul id="list-items" class="clearfix" style="overflow:hidden;">
 
             <li class="list-item clearfix">
             
                 <div class="img">
                 	<div class="pic">
-                        <a class="picRind" href="detail.html">
-                                <img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" />
-                        </a>
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
                     </div>
                 </div>
                 
@@ -144,14 +140,13 @@
                     </span>
                 </div>
                 
-            </li>
-
+            </li>            
 
             <li class="list-item clearfix">
             
                 <div class="img">
                 	<div class="pic">
-                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/testProductImg.jpg" /></a>
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
                     </div>
                 </div>
                 
@@ -188,12 +183,97 @@
                     </span>
                 </div>
                 
-            </li>
+            </li> 
 
+
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
+            
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
 
 		</ul>
-
-
+        
         <div id="pagination-bottom" class="pagination clearfix">
             <div class="pos-right">
             	<span class="page-start"></span>
@@ -243,112 +323,37 @@
       </div>
     </div>
     
+    
     <div class="col-sub">
     
 			<div id="refine-search">
             	
 	        	<div class="title"><span>Refine Search</span></div>
 	            
-	        	<div id="refine-selected">
-                
-	                <dl class="hover">
-	                	<div class="content">
-	                    	<dt>Catogries</dt>
-	                        <dd><a href="javascript:void(0);" class="first">Mobile Phone</a></dd>
-	                        <dd><a href="javascript:void(0);">APE</a></dd>
-	                        <dd><a href="javascript:void(0);">OGG</a></dd>
-	                        <dd><a href="javascript:void(0);">MP3</a></dd>
-	                        <dd><a href="javascript:void(0);">WMA</a></dd>
-	                        <dd class="bottom-border"></dd>
-	                    </div>
-	                </dl>
-	                
-	                <dl>
-	                    <dt>Catogries</dt>
-	                    <dd><a href="javascript:void(0);">Mobile Phone</a></dd>
-	                </dl>
-	                
-	                <dl class="hover">
-	                	<div class="content">
-	                    	<dt>Memory Size</dt>
-	                        <dd><a href="javascript:void(0);" class="first">16 GB</a></dd>
-	                        <dd><a href="javascript:void(0);">32 GB</a></dd>
-	                        <dd><a href="javascript:void(0);">64 GB</a></dd>
-	                        <dd class="bottom-border"></dd>
-	                    </div>
-	                </dl>
-	                
-	                <dl>
-	                    <dt>Memory Size</dt>
-	                    <dd><a href="javascript:void(0);">16 GB</a></dd>
-	                </dl>
-	
-	
-	                <dl class="hover">
-	                	<div class="content">
-	                        <dt>Music Format</dt>
-	                        <dd><a href="javascript:void(0);" class="first">FLAC</a></dd>
-	                        <dd><a href="javascript:void(0);">APE</a></dd>
-	                        <dd><a href="javascript:void(0);">OGG</a></dd>
-	                        <dd><a href="javascript:void(0);">MP3</a></dd>
-	                        <dd><a href="javascript:void(0);">WMA</a></dd>
-	                        <dd class="bottom-border"></dd>
-	                    </div>
-	                </dl>
-	                
-	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a></dd>
-	                </dl>
-	                
-	                <div style="clear:both"></div>
-	            </div>
-				<script language="JavaScript" type="text/javascript">
-                //<![CDATA[
-                    var refineSelected = new AE.run.wholesale.list.refineSelected();
-                    refineSelected.init({refineSelected	:	get("refine-selected")});
-                //]]>
-                </script>
-
-
 	            <div id="refine-list">
 	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-less" href="javascript:void(0);">View Less</a></dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                </dl>
-	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
-	                </dl>
-	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
-	                </dl>
-	                <dl class="collapse">
-	                    <dt>Music Format</dt>
+	                    <dt class="no-toggle">Related Categories:</dt>
+	                    <dd><a href="javascript:void(0);">MP1 Playes</a> (1000)</dd>
+	                    <dd><a href="javascript:void(0);">MP2 Playes</a> (999)</dd>
+	                    <dd><a href="javascript:void(0);">MP3 Playes</a>	(998)</dd>
+	                    <dd><a href="javascript:void(0);">MP4 Playes</a> (997)</dd>
+	                    <dd><a href="javascript:void(0);">MP5 Playes</a> (996)</dd>
+	                    <dd><a href="javascript:void(0);">MP6 Playes</a>	(995)</dd>
+	                    <dd><a href="javascript:void(0);">MP7 Playes</a> (994)</dd>
+                        <dd><a href="javascript:void(0);">MP8 Playes</a> (993)</dd>
+                        <dd><a href="javascript:void(0);">MP9 Playes</a> (992)</dd>
+                        <dd><a href="javascript:void(0);">MP10 Playes</a> (991)</dd>
+                        <dd><a href="javascript:void(0);">MP11 Playes</a> (990)</dd>
+                        <dd><a href="javascript:void(0);">MP12 Playes</a> (89)</dd>
+                        <dd><a href="javascript:void(0);">MP13 Playes</a> (88)</dd>
+                        <dd><a href="javascript:void(0);">MP14 Playes</a> (87)</dd>
+                        <dd><a href="javascript:void(0);">MP15 Playes</a> (6)</dd>
 	                </dl>
 	            </div>
-
-                
 
 	    </div>
 
-
+			
     </div>
   </div>
   

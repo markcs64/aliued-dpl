@@ -23,7 +23,6 @@
     
     <!-- #BeginEditable "js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-    <script language="JavaScript" type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/list.js"></script>
     <!-- #EndEditable -->
     
     <!--
@@ -54,7 +53,7 @@
   
   <div class="grid-c2">
     <div class="col-main">
-      <div id="main-wrap" class="main-wrap">
+      <div id="main-wrap" class="main-wrap gallery-mode">
       
 		<h1 id="result-info">
         	<strong>1985,11</strong> results in China for <em>Mobile Phone</em> :
@@ -71,11 +70,10 @@
             </form>
         </div>
 
-
         <ul id="toolbar">
-            <li class="mode mode-list">
-                View: <a id="view-list-mode" class="list-mode" href="list-A.html"></a>
-                <a id="view-thumb-mode" class="thumb-mode" href="list-B.html"></a>
+            <li id="view-mode" class="mode mode-list">
+                View: <a id="view-list-mode" class="list-mode" href="javascript:void(0);"></a>
+                <a id="view-thumb-mode" class="thumb-mode" href="javascript:void(0);"></a>
             </li>
             <li class="shipping">
             	Free Shipping to : 
@@ -105,9 +103,50 @@
             
                 <div class="img">
                 	<div class="pic">
-                        <a class="picRind" href="detail.html">
-                                <img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" />
-                        </a>
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li>            
+
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
                     </div>
                 </div>
                 
@@ -151,7 +190,7 @@
             
                 <div class="img">
                 	<div class="pic">
-                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/testProductImg.jpg" /></a>
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
                     </div>
                 </div>
                 
@@ -189,12 +228,51 @@
                 </div>
                 
             </li>
+            
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
 
-
-		</ul>
-
-
-        <div id="pagination-bottom" class="pagination clearfix">
+		</ul>        <div id="pagination-bottom" class="pagination clearfix">
             <div class="pos-right">
             	<span class="page-start"></span>
             	<span class="page-cur">1</span>
@@ -242,6 +320,7 @@
 
       </div>
     </div>
+    
     
     <div class="col-sub">
     
@@ -303,14 +382,8 @@
 	                
 	                <div style="clear:both"></div>
 	            </div>
-				<script language="JavaScript" type="text/javascript">
-                //<![CDATA[
-                    var refineSelected = new AE.run.wholesale.list.refineSelected();
-                    refineSelected.init({refineSelected	:	get("refine-selected")});
-                //]]>
-                </script>
-
-
+	            
+	            
 	            <div id="refine-list">
 	                <dl>
 	                    <dt>Music Format</dt>
@@ -343,12 +416,32 @@
 	                    <dt>Music Format</dt>
 	                </dl>
 	            </div>
-
                 
-
+                
+                
 	    </div>
 
-
+		<script language="JavaScript" type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/list.js"></script>
+        <script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+            var refineSelected = new AE.run.wholesale.list.refineSelected();
+            refineSelected.init({refineSelected	:	get("refine-selected")});
+			
+			// 模式转换
+			YUE.on(get("view-thumb-mode"),"click",function(){
+														   	YUD.addClass(get("main-wrap"),"gallery-mode");
+															YUD.replaceClass("view-mode","mode-list","mode-thumb");
+														   })
+			
+			YUE.on(get("view-list-mode"),"click",function(){
+														   	YUD.removeClass(get("main-wrap"),"gallery-mode");
+															YUD.replaceClass("view-mode","mode-thumb","mode-list");
+														   })
+			
+			
+        //]]>
+        </script>
+			
     </div>
   </div>
   
