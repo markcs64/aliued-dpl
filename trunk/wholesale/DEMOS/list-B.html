@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout-950(HF).dwt" codeOutsideHTMLIsLocked="false" --><head>
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- #BeginTemplate "/Templates/layout-950(HF).dwt" --><!-- DW6 --><head>
 	<title>{ 自定义标题 }</title>
   	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="{ 自定义 }" />
@@ -11,22 +11,23 @@
 		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
 		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
     </style>
-	<!-- InstanceBeginEditable name="css" -->
+	<!-- #BeginEditable "css" -->
 	<style type="text/css" media="all">
+		@import url("http://style.alibaba.com/css/4v/wholesale/common.css?c=200905311412.css");
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
+		@import url("http://style.alibaba.com/css/4v/wholesale/list.css?c=200905311412.css");
     </style>
-    <!-- InstanceEndEditable -->
+    <!-- #EndEditable -->
 
     <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
     
-    <!-- InstanceBeginEditable name="js" -->
+    <!-- #BeginEditable "js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-	<script language="JavaScript" type="text/javascript">
-    try{document.domain="alibaba.com";}catch(E){}
-    </script>
-    <!-- InstanceEndEditable -->
+    <!-- #EndEditable -->
     
+    <!--
     <base href="http://www.alibaba.com">
+    -->
 </head>
 <body>
 
@@ -48,32 +49,396 @@
 <!-- #EndLibraryItem -->
 
 
-  <!-- InstanceBeginEditable name="content" -->
-    
-    
-    
-    	<p>
-    	  <!-- 这里写入你的内容 -->
-   	  </p>
-    	<div class="grid-c2">
-    	  <div class="col-main">
-    	    <div class="main-wrap">
-    	      <div class="test-box">main<span class="width">750px</span></div>
-  	      </div>
-  	    </div>
-    	  <div class="col-sub">
-    	    <div class="test-box-big">sub<span class="width">190px</span></div>
-  	    </div>
-  	  </div>
-<p>&nbsp;</p>
-   	  <p>&nbsp;</p>
-    	<p>    	  <br />
-  	  </p>
-        <!-- 这里写入你的内容 -->
+  <!-- #BeginEditable "content" -->
+  
+  <div class="grid-c2">
+    <div class="col-main">
+      <div id="main-wrap" class="main-wrap gallery-mode">
+      
+		<h1 id="result-info">
+        	<strong>1985,11</strong> results in China for <em>Mobile Phone</em> :
+        </h1>
+
+        <div id="filter">
+        	<form id="filterForm" name="filterForm" method="get" action="target-action">
+        		Quantity: <input id="filter-quantity" /> Price Per Unit: US$ <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                <input id="filter-submit" type="submit" value="" />
+                China Province:
+                <select>
+					<option>Select</option>
+                </select>
+            </form>
+        </div>
+
+        <ul id="toolbar">
+            <li id="view-mode" class="mode mode-thumb">
+                View: <a id="view-list-mode" class="list-mode" href="list-A.html"></a>
+                <a id="view-thumb-mode" class="thumb-mode" href="list-B.html"></a>
+            </li>
+            <li class="shipping">
+            	Free Shipping to : 
+                <select id="free-shipping-selector">
+					<option>Select</option>
+                </select>
+            </li>
+            <li class="sort">
+            	Sory by : 
+                <select id="sort-selector">
+                	<option>Best match</option>
+					<option>Time Remaining (End Date)</option>
+                    <option>Price (Lowest)</option>
+                    <option>Date Added (Newest)</option>
+                </select>
+            </li>
+            <li class="left-corner"></li><li class="right-corner"></li>
+        </ul>
+
+		<div id="notice-info">
+			All Suppliers are verified by Alibaba.com
+        </div>
+
+		<ul id="list-items" class="clearfix">
+
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li>            
+
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
+
+
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
+            
+            <li class="list-item clearfix">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="price-remark">
+                    	10 pieces / Lot
+                        <br />
+                        us$26.00 - 40.00 / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
+                    <span class="time-remark">Time Remaining: 27days</span>
+                    <span class="brief">
+                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
+                    </span>
+                    <span class="shipping">
+                        <strong>FREE shipping</strong> ( All Countries )
+                    </span>
+                    <span class="address">
+                        China ZheJiang HZ Alibaba.com UED.
+                    </span>
+                    <span class="legend">
+    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                    </span>
+                </div>
+                
+            </li> 
+
+		</ul>
         
         
+        <div id="pagination-bottom" class="pagination clearfix">
+            <div class="pos-right">
+            	<span class="page-start"></span>
+            	<span class="page-cur">1</span>
+                <a href="javascript:void(0);">2</a>
+                <a href="javascript:void(0);">3</a>
+                <a href="javascript:void(0);">4</a>
+                <a href="javascript:void(0);">5</a>
+                <a href="javascript:void(0);">6</a>
+                <a href="javascript:void(0);">7</a>
+                <a href="javascript:void(0);">8</a>
+                <a href="javascript:void(0);">9</a>
+                <a href="javascript:void(0);">10</a>
+                <span class="page-break">...</span>
+                <a href="">99</a>
+                <a href="">100</a>
+                <a class="page-next" href="javascript:void(0);">Next</a>
+                <span class="page-skip" style="float:left; margin-left:5px; _margin-top:-2px;">
+                    <form id="pagination-bottom-form" onsubmit="return check()" action="target" method="get">
+                        Go to Page
+                        <input id="pagination-bottom-input" class="pagination-input" type="text" value="" />
+                        <input id="pagination-bottom-submit" class="pagination-submit" type="submit" value="" />
+                    </form>
+                </span>
+            </div>
+        </div>
         
-	<!-- InstanceEndEditable -->
+        
+        <div id="related-searches">
+        	<strong>Related Searches</strong>: <a href="javascript:void(0);">metal slug</a> , <a href="javascript:void(0);">naruto</a> , <a href="javascript:void(0);">warcraft</a> , <a href="javascript:void(0);">starcraft</a> , <a href="javascript:void(0);">blizzard</a> , <a href="javascript:void(0);">aliued</a> 
+        	<a class="view-more" href="javascript:void(0);">View More</a>
+        </div>
+        
+        
+        <div id="bottom-search" style=" border: 1px solid #FFBA52; border-left:none; border-right:none; margin:10px 15px; background-color:#FFF2E1; padding:20px 0; ">
+            <div style=" width:452px; background:url(http://img.alibaba.com/images/eng/wholesale/bg/bottom-search-bg.gif) repeat-x; padding:1px 2px; border:1px solid #EC861A; margin:0 auto;" class="clearfix">
+            	<form id="bottom-search-form" name="bottom-search-form" method="get" action="target-action">
+                    <input id="bottom-search-input" style="width:375px; margin-top:2px; float:left; position:relative;" />
+                    <input id="bottom-search-submit" type="submit" style="float:left; margin-left:1px;" value="" />
+                </form>
+            </div>
+            
+            
+        </div>
+
+
+      </div>
+    </div>
+    
+    
+    <div class="col-sub">
+    
+			<div id="refine-search">
+            	
+	        	<div class="title"><span>Refine Search</span></div>
+	            
+	        	<div id="refine-selected">
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Catogries</dt>
+	                        <dd><a href="javascript:void(0);" class="first">Mobile Phone</a></dd>
+	                        <dd><a href="javascript:void(0);">APE</a></dd>
+	                        <dd><a href="javascript:void(0);">OGG</a></dd>
+	                        <dd><a href="javascript:void(0);">MP3</a></dd>
+	                        <dd><a href="javascript:void(0);">WMA</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Catogries</dt>
+	                    <dd><a href="javascript:void(0);">Mobile Phone</a></dd>
+	                </dl>
+	                
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Memory Size</dt>
+	                        <dd><a href="javascript:void(0);" class="first">16 GB</a></dd>
+	                        <dd><a href="javascript:void(0);">32 GB</a></dd>
+	                        <dd><a href="javascript:void(0);">64 GB</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Memory Size</dt>
+	                    <dd><a href="javascript:void(0);">16 GB</a></dd>
+	                </dl>
+	
+	
+	                <dl class="hover">
+	                	<div class="content">
+	                        <dt>Music Format</dt>
+	                        <dd><a href="javascript:void(0);" class="first">FLAC</a></dd>
+	                        <dd><a href="javascript:void(0);">APE</a></dd>
+	                        <dd><a href="javascript:void(0);">OGG</a></dd>
+	                        <dd><a href="javascript:void(0);">MP3</a></dd>
+	                        <dd><a href="javascript:void(0);">WMA</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="javascript:void(0);">FLAC</a></dd>
+	                </dl>
+	                
+	                <div style="clear:both"></div>
+	            </div>
+				<script language="JavaScript" type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/list.js"></script>
+                <script language="JavaScript" type="text/javascript">
+                //<![CDATA[
+                    var refineSelected = new AE.run.wholesale.list.refineSelected();
+                    refineSelected.init({refineSelected	:	get("refine-selected")});
+                //]]>
+                </script>
+	            
+                
+	            <div id="refine-list">
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
+	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
+	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
+	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
+	                    <dd><a class="view-less" href="javascript:void(0);">View Less</a></dd>
+	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
+	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
+	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
+	                </dl>
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
+	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
+	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
+	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
+	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
+	                </dl>
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
+	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
+	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
+	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
+	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
+	                </dl>
+	                <dl class="collapse">
+	                    <dt>Music Format</dt>
+	                </dl>
+	            </div>
+	    </div>
+
+
+    </div>
+  </div>
+  
+
+
+
+
+
+
+  
+  <!-- #EndEditable -->
 
     <div id="footer">
     <a href="http://www.alibaba.com/aboutalibaba/index.html"rel="nofollow"><strong>Company Info</strong></a>-<a href="http://www.alibaba.com/aboutalibaba/partnership_with_alibaba.html"rel="nofollow"><strong>Partnerships</strong></A><br/><a href="http://www.alibaba.com/">Manufacturers</A>-<a href="http://chinasuppliers.alibaba.com/">Gold Suppliers</a>-<a href="http://www.alibaba.com/catalogs/0/product.html"rel="nofollow">Buy</a>-<a href="http://importer.alibaba.com"rel="nofollow">Sell</a>-<a href="http://tradeshow.alibaba.com"rel="nofollow">Trade Shows</a>-<a href="http://us.my.alibaba.com/"rel="nofollow">My Alibaba</a>-<a href="http://exporter.alibaba.com/">China Export Services</a>-<a href="http://www.alibaba.com/trade/help/helpcenter"rel="nofollow">Help</a>-<a href="http://www.alibaba.com/sitemap.html">Site Map</a>-<a href="http://www.alibaba.com/trade/servlet/page/static/help/contact_us_answer"rel="nofollow">Customer Service</a><p>Browse Alphabetically:<a href="http://www.alibaba.com/showroom/category.html">All Products</a>,<a href="http://www.alibaba.com/buyeroffers/category.html">Importers</a>,<a href="http://www.alibaba.com/countrysearch/CN/China.html">China</a>,<a href="http://www.alibaba.com/countrysearch/continent.html">Countries</a><br/><br/><a href="http://www.alibaba.com/aboutalibaba/aligroup/index.html"rel="nofollow">Alibaba Group</a>:Alibaba.com:<a href="http://china.alibaba.com"target="_blank">Alibaba China</a>-<a href="http://www.alibaba.com"target="_blank"rel="nofollow">Alibaba International</a>-<a href="http://www.alibaba.co.jp"target="_blank">Alibaba Japan</a>|<a href="http://www.taobao.com"target="_blank">Taobao</a>|<a href="http://www.alipay.com"target="_blank">Alipay</a>|<a href="http://www.yahoo.com.cn"target="_blank">Yahoo!China</a>|<a href="http://www.koubei.com"target="_blank">Koubei.com</a>|<a href="http://www.alisoft.com"target="_blank">Alisoft</a>|<a href="http://www.alimama.com"target="_blank">Alimama</a></p><a rel="nofollow"href="http://www.alibaba.com/trade/servlet/page/help/rules_and_policies/products_listing_policy">Product Listing Policy</a>-<a rel="nofollow"href="http://www.alibaba.com/trade/servlet/page/help/rules_and_policies/intellectual_property_policy">Intellectual Property Policy and Infringement Claims</a>-<a rel="nofollow"href="http://www.alibaba.com/trade/servlet/page/help/rules_and_policies/privacy_policy">Privacy Policy</a>-<a rel="nofollow"href="http://www.alibaba.com/trade/servlet/page/help/rules_and_policies/term_of_use">Terms of Use</a>-<a href="http://www.alibaba.com/trade/servlet/page/static/safetrade/index"rel="nofollow">Safe Trading Tips</a>-<a rel="nofollow"href="http://legal.alibaba.com/legal/site/login/login.htm?site_type=international&language_id=english">Report Intellectual Property Right Infringement</a><br/><a href="http://www.alibaba.com/trade/servlet/page/static/copyright_policy"rel="nofollow">Copyright Notice</a>&copy 1999-2009 Alibaba.com Limited and/or its subsidiaries and licensors.All rights reserved.
@@ -84,4 +449,4 @@
     
     
 </body>
-<!-- InstanceEnd --></html>
+<!-- #EndTemplate --></html>
