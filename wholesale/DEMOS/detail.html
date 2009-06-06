@@ -151,19 +151,74 @@
 
 		AE.widget.tabs = function() {
 			this.defConfig = {
-				tabId : 'tabs'
-				
+				tabId        : 'tabs',
+				contentIds : [ // 由于选中的标题要隐藏，需要标题保持<h3 class="titleA">格式
+							  	'tab-details',
+							 	'tab-s-p',
+								'tab-p-o'
+							 ]
 			};
 			this.config = this.defConfig;
 		};
 		AE.widget.tabs.prototype = {
 			init : function() {
+				this.tabs = get(this.config.tabId).getElementsByTagName('li');
+				var _this = this;
+
+				for(var i=0, l=this.tabs.length; i<l; i++)
+					this.tabs[i].index = i;
+
+				this.contents = [];
+				for(i=0, l=this.config.contentIds.length; i<l; i++) {
+					var d = get(this.config.contentIds[i]);
+					var h = YUD.getElementsByClassName( 'titleA', 'h3', d );
+					if( h.length > 0)
+						d._head = h[0]; // 保存对标题的引用
+
+					this.contents.push( d );
+				}
 				
+				
+				// 去掉链接虚线
+				for(i=0, l=this.tabs.length; i<l; i++ ) {
+					var a = this.tabs[i].getElementsByTagName('a')[0];
+					a.hideFocus = true; // IE
+					a.style.outline = 'none'; // W3C
+				}
+				
+				YUD.addClass(this.tabs[0], 'current');
+				this.currentTab = this.tabs[0];
+				
+				YUE.on(this.tabs, 'click', function() {
+					if(_this.currentTab == this) return;
+					YUD.addClass(this, 'current');
+					YUD.removeClass(_this.currentTab, 'current');
+					_this.currentTab = this;
+
+					for(var i=0, l=_this.contents.length; i<l; i++) {
+						//_this.contents[i].style.display = i<this.index ? 'none' : '';
+						//if(_this.contents[i]._head)
+						//	_this.contents[i]._head.style.display = i<this.index ? '' : 'none';
+						if(i < this.index) {
+							_this.contents[i].style.display = 'none';
+							
+						} else if(i == this.index) {
+							_this.contents[i].style.display = '';
+							if(_this.contents[i]._head)
+								_this.contents[i]._head.style.display = 'none';
+						} else {
+							if(_this.contents[i]._head) {
+								_this.contents[i]._head.style.display = '';
+							}
+						}
+					}
+				});
 			}
 		};
 
 		YUE.onDOMReady(function(){
 			(new AE.widget.selectTable()).init();
+			(new AE.widget.tabs()).init();
 		});
 	</script>
 <!--	<script language="JavaScript" type="text/javascript">
@@ -198,7 +253,7 @@
   <!-- InstanceBeginEditable name="content" -->
 <div id="base">
     <div class="grid-c3-s7e6">
-    	<h1 id="product-name">30%OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress--------------------------------</h1>
+    	<h1 id="product-name">30%OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress</h1>
       <div class="col-main">
         <div class="main-wrap">
               <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">2,050.20 - 3,180.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
@@ -371,7 +426,7 @@
                 <div class="zoom-in"><a href="#" id="companyProductItemDesc">View Larger Image : 30% OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress all sizes</a></div>
             </div>
           </div>
-<!--          <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
+          <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
           <script type="text/javascript">
 				(function(){
 					var aSetBigImageSrc = [
@@ -391,7 +446,8 @@
 							aImgSrc: aSetBigImageSrc,
 							aImgHref: 'javascript:location.href=getUrlPer("http://www.alibaba.com/product-gs/202775529/11_5_inch_portable_DVD_player/showimage.html");',
 							sSwitchEvent: "mouseover",
-							sCurrentClass: "current"
+							sCurrentClass: "current",
+							bNeedAdjust : false
 					}
 					var productShowA = new AE.widget.dynamicImagesShow();
 					productShowA.init(fConfig);
@@ -403,7 +459,7 @@
 						turning($pn + 1, 'next');
 					});
 				})();
-			</script>-->
+			</script>
         </div>
       	<div id="sidebar" class="col-extra box-tA box-tAcG">
         	<div class="top">
@@ -429,10 +485,10 @@
                         </ul>
                     </div>
                     <div class="contact">
+                    	<h4>contact the Supplier:</h4>
                         <ul>
-                            <li class="name">Contact Person: Charile chidsd fremaner</li>
-                            <li class="chat"></li>
-                            <li class="mail"></li>
+                            <li class="l1"><a rel="nofollow" href="javascript:alitalkEncryptNew('8pctgRBMALMdNVs5V+7i468ZDl++n9gA','1','50136307')" id="talkId14" class="atm32" title="TradeManager">I'm online<br/>Chat now!</a></li>
+                            <li class="l2">Contact Person: <br />Charile chidsd fremaner</li>
                         </ul>
                     </div>
                 </div><!-- .mc -->
