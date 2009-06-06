@@ -313,36 +313,81 @@
 
 	            <div id="refine-list">
 	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-less" href="javascript:void(0);">View Less</a></dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
+	                    <dt>Related Categories</dt>
+	                    <dd><a>MP1 Playes  <span>(1000)</span></a></dd>
+						<dd><a>MP2 Playes  <span>(999)</span></a></dd>
+                        <dd><a>MP3 Playes  <span>(997)</span></a></dd>
+                        <dd><a>MP4 Playes  <span>(996)</span></a></dd>
+                        <dd><a>MP5 Playes  <span>(986)</span></a></dd>
+	                    <dd class="view-more-handle"><a><span class="view-more">View More</span></a></dd>
+                        <dd class="view-more-box">
+                            <a>MP6 Playes <span>(10)</span></a>
+                            <a>MP7 Playes <span>(9)</span></a>
+                            <a>MP8 Playes <span>(8)</span></a>
+                            <a>MP9 Playes <span>(7)</span></a>
+                            <a>MP10 Playes <span>(6)</span></a>
+                            <a>MP11 Playes <span>(5)</span></a>
+                            <a>MP12 Playes <span>(4)</span></a>
+                            <a>MP13 Playes <span>(3)</span></a>
+                            <a>MP14 Playes <span>(2)</span></a>
+                            <a>MP15 Playes <span>(1)</span></a>
+                        </dd>
 	                </dl>
 	                <dl>
-	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
+	                    <dt>Memory Size</dt>
+	                    <dd><a>4G <span>(1000)</span></a></dd>
+	                    <dd><a>8G <span>(999)</span></a></dd>
+	                    <dd><a>16G <span>(998)</span></a></dd>
+	                    <dd><a>32G <span>(997)</span></a></dd>
+	                    <dd><a>64G <span>(996)</span></a></dd>
+	                    <dd><a>512M <span>(100)</span></a></dd>
+	                    <dd><a>256M <span>(99)</span></a></dd>
+	                    <dd><a>128M <span>(98)</span></a></dd>
+	                    <dd><a>64M <span>(97)</span></a></dd>
+	                    <dd><a>32M <span>(96)</span></a></dd>
+	                    <dd class="view-more-handle"><a><span class="view-more">View More</span></a></dd>
+                        <dd class="view-more-box">
+                            <a>512K <span>(10)</span></a>
+                            <a>256K <span>(9)</span></a>
+                            <a>128K <span>(8)</span></a>
+                            <a>64K <span>(7)</span></a>
+                        </dd>
 	                </dl>
+
 	                <dl>
 	                    <dt>Music Format</dt>
-	                    <dd><a href="javascript:void(0);">FLAC</a> (1985)</dd>
-	                    <dd><a href="javascript:void(0);">APE</a> (1129)</dd>
-	                    <dd><a href="javascript:void(0);">OGG</a>	(49)</dd>
-	                    <dd><a href="javascript:void(0);">MP3</a> (47)</dd>
-	                    <dd><a class="view-more" href="javascript:void(0);">View More</a></dd>
+	                    <dd><a>MP3 <span>(1000)</span></a></dd>
+	                    <dd><a>WMA <span>(999)</span></a></dd>
+	                    <dd><a>FLAC <span>(998)</span></a></dd>
+	                    <dd><a>APE <span>(997)</span></a></dd>
+	                    <dd><a>OGG <span>(222)</span></a></dd>
 	                </dl>
+                    
+	                <dl>
+	                    <dt>Standby Time </dt>
+	                    <dd><a>24 Hours <span>(1000)</span></a></dd>
+	                    <dd><a>12 Hours <span>(999)</span></a></dd>
+	                    <dd><a>6 Hours <span>(998)</span></a></dd>
+	                </dl>
+                    
+                    <!-- 超过3组属性 collapse -->
 	                <dl class="collapse">
-	                    <dt>Music Format</dt>
+	                    <dt>Price</dt>
+	                    <dd><a>US$10-20 <span>(1000)</span></a></dd>
+	                    <dd><a>US$20-30 <span>(999)</span></a></dd>
+	                    <dd><a>US$40-60 <span>(998)</span></a></dd>
+	                    <dd><a>US$80-120 <span>(997)</span></a></dd>
+	                    <dd><a>US$120-200 <span>(222)</span></a></dd>
 	                </dl>
+
 	            </div>
+				<script language="JavaScript" type="text/javascript">
+                //<![CDATA[
+                    var refineList = new AE.run.wholesale.list.refineList();
+                    refineList.init({refineList	:	get("refine-list")});
+					AE.tool.defineEmptyLinks("pagination-bottom");
+                //]]>
+                </script>
 
                 
 
