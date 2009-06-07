@@ -61,15 +61,45 @@
         </h1>
 
         <div id="filter">
-        	<form id="filterForm" name="filterForm" method="get" action="target-action">
-        		Quantity: <input id="filter-quantity" /> Price Per Unit: US$ <input id="filter-price-from"/> - <input id="filter-price-to"/>
+        	<form id="filter-form" method="get" action="target-action">
+        		Quantity: <input id="filter-quantity" />
+                <div id="filter-quantity-box" style="display:none;">
+                    <a>1</a>
+                    <a>5</a>
+                    <a>10</a>
+                    <a>15</a>
+                    <a>20</a>
+                    <a>30</a>
+                    <a>50</a>
+                </div>
+
+                Price Per Unit: US$
+                <span id="filter-price">
+                <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                </span>
+                <div id="filter-price-box" style="display:none;">
+                    <a>$0 - $25</a>
+                    <a>$25 - $50</a>
+                    <a>$50 - $100</a>
+                    <a>$100 - $200</a>
+                    <a>$200 and above</a>
+                </div>
+                
                 <input id="filter-submit" type="submit" value="" />
+                
                 China Province:
                 <select>
 					<option>Select</option>
                 </select>
             </form>
         </div>
+		<script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+            get("filter").filter = (new AE.run.wholesale.list.filter()).init();
+        //]]>
+        </script>
+
+
 
 
         <ul id="toolbar">
@@ -119,7 +149,7 @@
                     <span class="price-remark">
                     	us$12.30 - 32.10 / Piece
                     </span>
-                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <span class="min-order">Min. Order : 20 lots</span>
                     <a class="buy-now" href="javascript:void(0);">
                     	<img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" />
                     </a>
@@ -301,8 +331,7 @@
 	            </div>
 				<script language="JavaScript" type="text/javascript">
                 //<![CDATA[
-                    var refineSelected = new AE.run.wholesale.list.refineSelected();
-                    refineSelected.init({refineSelected	:	get("refine-selected")});
+                    get("refine-selected").refineSelected = (new AE.run.wholesale.list.refineSelected()).init();
                 //]]>
                 </script>
 
@@ -379,8 +408,7 @@
 	            </div>
 				<script language="JavaScript" type="text/javascript">
                 //<![CDATA[
-                    var refineList = new AE.run.wholesale.list.refineList();
-                    refineList.init();
+					get("refine-list").refineSelected = (new AE.run.wholesale.list.refineList()).init();
 					
 					AE.tool.defineEmptyLinks("pagination-bottom");
                 //]]>
