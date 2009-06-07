@@ -75,7 +75,6 @@
 			// 检验数据
 			// @param st : AE.widget.selectTable 的对象
 			validate : function(st) {
-				if(!this['quantity']) return;
 				var v = this['quantity'].value;
 				// 联动 input
 				for(var i=0, l=st.qe.length; i<l; i++) {
@@ -87,13 +86,13 @@
 					return false;
 				}
 				var q = parseInt(st.se[0][st.se[0].selectedIndex].getAttribute('quantity'));
-				// 联动 unit
-				for(i=0, l=st.ue.length; i<l; i++) {
-					st.ue[i].innerHTML = v > 1 ? 'Lots' : 'Lot';
-				}
 				if(v < q) {
 					st.showWarn( st.config.textLessThan, q );
 					return false;
+				}
+				// 联动 unit
+				for(i=0, l=st.ue.length; i<l; i++) {
+					st.ue[i].innerHTML = v > 1 ? 'Lots' : 'Lot';
 				}
 				st.hideWarn();
 				return true;
@@ -258,14 +257,9 @@
       <div class="col-main">
         <div class="main-wrap">
               <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">2,050.20 - 3,180.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
-              <p class="quantity dashed-border-bottom clearfix">
-                <span class="p1">1000 Pieces / lot</span>
-                <span class="p2">US$2050.02 - 3180.00 / Pieces</span>
+              <p class="quantity single dashed-border-bottom clearfix">
                 <span class="p3">Min. order : 1000 lots</span>
               </p>
-<!--          单卖情况下显示：    <p class="quantity single dashed-border-bottom clearfix">
-                <span class="p3">Min. order : 1000 lots</span>
-              </p>-->
              <form action="javascript:alert('通过检测，提交到服务器！！');" class="buyform">
               <p class="standard">Product Optiors: <select id="standard-1" class="standard-select">
                     <option value="1" quantity="3">1G</option>

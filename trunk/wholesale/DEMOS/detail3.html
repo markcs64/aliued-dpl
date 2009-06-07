@@ -87,13 +87,13 @@
 					return false;
 				}
 				var q = parseInt(st.se[0][st.se[0].selectedIndex].getAttribute('quantity'));
-				// 联动 unit
-				for(i=0, l=st.ue.length; i<l; i++) {
-					st.ue[i].innerHTML = v > 1 ? 'Lots' : 'Lot';
-				}
 				if(v < q) {
 					st.showWarn( st.config.textLessThan, q );
 					return false;
+				}
+				// 联动 unit
+				for(i=0, l=st.ue.length; i<l; i++) {
+					st.ue[i].innerHTML = v > 1 ? 'Lots' : 'Lot';
 				}
 				st.hideWarn();
 				return true;
@@ -379,27 +379,9 @@
                     </tbody>
                   </table>
                 </div><!-- .detail -->
-              <div class="buynow box-cGtA">
-                <div class="content">
-                    <label for="quantity-1">Quantity:</label>
-                    <input type="text" name="quantity" id="quantity-1" value="1" size="5" class="standard-quantity" /> <span class="standard-unit">Lot</span>
-                    <input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" class="image-submit" alt="Buy Now!" />
-                    
-                  </div>
-                </div><!-- .buynow .box-a -->
-                
-                <div class="board alertB warn">
-                	Please try again! The mininum order for this product is 3 lots.
-                </div>
-                
-                <div>
-                	
-                </div>
-                <div class="shopping-cost dashed-border-bottom">
-                    Shopping Cost: <a href="#"><img src="http://img.alibaba.com/images/eng/wholesale/icon/caculate.gif" alt="Caculate" class="caculate" /></a>
-                </div>
-                <div class="time-remaining">
-                	Time Remaining: 27 Days 56 Hours 23 Minutes
+              	<div id="no-longer-available" class="board alertA">
+					<strong class="important-words">Sorry, this item is no longer available!</strong>
+                    <a href="#">Click hera</a> to view similar products on this Supplier's Homepage.
                 </div>
                 </form>
           	</div>
@@ -707,7 +689,7 @@
         	<div class="buy-now">
             	<h3>Buy Now</h3>
                 <div class="content">
-                	<form action="javascript:alert('通过检测，提交到服务器！');" class="buyform">
+                	<form class="buyform" onsubmit="return false;">
                     	<table>
                         	<tr>
                             	<th><label for="standard-2">Standard:</label> </th>
@@ -729,7 +711,7 @@
                             </tr>
                             <tr>
                             	<td>&nbsp;</td>
-                                <td><input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now.gif" alt="Buy Now!" /></td>
+                                <td><input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-disabled.gif" disabled="disabled" alt="Buy Now!" /></td>
                             </tr>
                         </table>
                     </form>
