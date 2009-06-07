@@ -61,8 +61,30 @@
         </h1>
 
         <div id="filter">
-        	<form id="filterForm" name="filterForm" method="get" action="target-action">
-        		Quantity: <input id="filter-quantity" /> Price Per Unit: US$ <input id="filter-price-from"/> - <input id="filter-price-to"/>
+        	<form id="filter-form" method="get" action="target-action">
+        		Quantity: <input id="filter-quantity" />
+                <div id="filter-quantity-box" style="display:none;">
+                    <a>1</a>
+                    <a>5</a>
+                    <a>10</a>
+                    <a>15</a>
+                    <a>20</a>
+                    <a>30</a>
+                    <a>50</a>
+                </div>
+
+                Price Per Unit: US$
+                <span id="filter-price">
+                <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                </span>
+                <div id="filter-price-box" style="display:none;">
+                    <a>$0 - $25</a>
+                    <a>$25 - $50</a>
+                    <a>$50 - $100</a>
+                    <a>$100 - $200</a>
+                    <a>$200 and above</a>
+                </div>
+                
                 <input id="filter-submit" type="submit" value="" />
                 China Province:
                 <select>
@@ -70,6 +92,11 @@
                 </select>
             </form>
         </div>
+		<script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+            get("filter").filter = (new AE.run.wholesale.list.filter()).init();
+        //]]>
+        </script>
 
         <ul id="toolbar">
             <li id="view-mode" class="mode mode-thumb">
@@ -100,7 +127,7 @@
 
 		<ul id="list-items" class="clearfix">
 
-            <li class="list-item clearfix">
+            <li class="list-item">
             
                 <div class="img">
                 	<div class="pic">
@@ -110,15 +137,18 @@
                 
                 <div class="info">
                     <span class="unit-price">
-                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Lot
+                    </span>
+                    <span class="unit-remark">
+                    	10 pieces / Lot
                     </span>
                     <span class="price-remark">
-                    	10 pieces / Lot
-                        <br />
-                        us$26.00 - 40.00 / Piece
+                    	us$12.30 - 32.10 / Piece
                     </span>
-                    <span class="min-order">Min. Order : 20 Pieces</span>
-                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <span class="min-order">Min. Order : 20 lots</span>
+                    <a class="buy-now" href="javascript:void(0);">
+                    	<img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" />
+                    </a>
                     <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
                     	I'm online<br/>Chat now!
                     </a>
@@ -141,53 +171,10 @@
                     </span>
                 </div>
                 
-            </li>            
-
-            <li class="list-item clearfix">
-            
-                <div class="img">
-                	<div class="pic">
-                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
-                    </div>
-                </div>
-                
-                <div class="info">
-                    <span class="unit-price">
-                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
-                    </span>
-                    <span class="price-remark">
-                    	10 pieces / Lot
-                        <br />
-                        us$26.00 - 40.00 / Piece
-                    </span>
-                    <span class="min-order">Min. Order : 20 Pieces</span>
-                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
-                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
-                    	I'm online<br/>Chat now!
-                    </a>
-                </div>
-            
-                <div class="detail">
-                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
-                    <span class="time-remark">Time Remaining: 27days</span>
-                    <span class="brief">
-                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
-                    </span>
-                    <span class="shipping">
-                        <strong>FREE shipping</strong> ( All Countries )
-                    </span>
-                    <span class="address">
-                        China ZheJiang HZ Alibaba.com UED.
-                    </span>
-                    <span class="legend">
-    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
-                    </span>
-                </div>
-                
-            </li> 
+            </li>
 
 
-            <li class="list-item clearfix">
+            <li class="list-item">
             
                 <div class="img">
                 	<div class="pic">
@@ -198,11 +185,6 @@
                 <div class="info">
                     <span class="unit-price">
                         us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
-                    </span>
-                    <span class="price-remark">
-                    	10 pieces / Lot
-                        <br />
-                        us$26.00 - 40.00 / Piece
                     </span>
                     <span class="min-order">Min. Order : 20 Pieces</span>
                     <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
@@ -228,53 +210,12 @@
                     </span>
                 </div>
                 
-            </li> 
+            </li>
             
-            <li class="list-item clearfix">
-            
-                <div class="img">
-                	<div class="pic">
-                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
-                    </div>
-                </div>
-                
-                <div class="info">
-                    <span class="unit-price">
-                        us$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
-                    </span>
-                    <span class="price-remark">
-                    	10 pieces / Lot
-                        <br />
-                        us$26.00 - 40.00 / Piece
-                    </span>
-                    <span class="min-order">Min. Order : 20 Pieces</span>
-                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
-                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
-                    	I'm online<br/>Chat now!
-                    </a>
-                </div>
-            
-                <div class="detail">
-                    <h2><a href="detail.html">i wanna mobile phone , i like M8.</a></h2>
-                    <span class="time-remark">Time Remaining: 27days</span>
-                    <span class="brief">
-                        hello 1234 hello alibaba hello ued 127.0.0.1 404 page not found  [SNK] Metal Slug - love Fio  
-                    </span>
-                    <span class="shipping">
-                        <strong>FREE shipping</strong> ( All Countries )
-                    </span>
-                    <span class="address">
-                        China ZheJiang HZ Alibaba.com UED.
-                    </span>
-                    <span class="legend">
-    					<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
-                    </span>
-                </div>
-                
-            </li> 
 
 		</ul>
-        
+
+
         <div id="pagination-bottom" class="pagination clearfix">
             <div class="pos-right">
             	<span class="page-start"></span>
@@ -323,7 +264,6 @@
 
       </div>
     </div>
-    
     
     <div class="col-sub">
     
