@@ -23,205 +23,8 @@
     
     <!-- InstanceBeginEditable name="js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-    <script type="text/javascript">
-		AE.widget.selectTable = function() {
-			this.defConfig = {
-				selectElementClass : 'standard-select',   // 联动下拉框 class
-				unitClass          : 'standard-unit',     // 单位　Element class
-				quantityClass      : 'standard-quantity', // 数量 input class
-				tableClass         : 'standard-tables',   // 价目表 class
-				buyformClass       : 'buyform',           // 表单 class
-				warnClass          : 'warn',              // 警示框 class
-				textLessThan       : 'Please try again! The mininum order for this product is % lots.', // 文案：小于最小起订量.百分号会被替换成最小起订数
-				textNotANumber     : 'Please try again! The quantity must be a number.'                 // 文案：输入了非数字
-			};
-			this.config = this.defConfig;
-		};
-		AE.widget.selectTable.prototype = {
-			init : function() {
-				this.se = YUD.getElementsByClassName(this.config.selectElementClass, 'select', 'page');
-				this.ue = YUD.getElementsByClassName(this.config.unitClass, 'span', 'page');
-				this.qe = YUD.getElementsByClassName(this.config.quantityClass, 'input', 'page');
-				this.te = YUD.getElementsByClassName(this.config.tableClass, 'table', 'page');
-				this.fe = YUD.getElementsByClassName(this.config.buyformClass, 'form', 'page');
-				this.warnbox = YUD.getElementsByClassName(this.config.warnClass, '*', 'page');
-
-				for(var i=0, l=this.te.length; i<l; i++) {
-					if(i == 0) {
-						this.te[i].style.display = '';
-						this.currentTable = this.te[i];
-					} else {
-						this.te[i].style.display = 'none';
-					}
-				}
-				var _this = this;
-				YUE.on(this.se, 'change', function() {_this.setValue(this);});
-				this.setValue(this.se[this.se.length-1]);
-				
-				// input
-				YUE.on(this.qe, 'blur', function() {
-					_this.validate.call(this.form, _this);
-				});
-				YUE.on(this.qe, 'keydown', function() {
-					if(!_this.edited) _this.edited = true; // 用户已经编辑过
-				})
-				// form
-				YUE.on(this.fe, 'submit', function(e) {
-					if(!_this.validate.call(this, _this)) {
-						return YUE.preventDefault(e);
-					}
-			   	});
-			},
-			// 检验数据
-			// @param st : AE.widget.selectTable 的对象
-			validate : function(st) {
-				if(!this['quantity']) return;
-				var v = this['quantity'].value;
-				// 联动 input
-				for(var i=0, l=st.qe.length; i<l; i++) {
-					if( st.qe[i] == this['quantity'] ) continue;
-					st.qe[i].value = this['quantity'].value;
-				}
-				if( !/^[123456789]\d*$/.test(v) ) { // 数据不合格
-					st.showWarn( st.config.textNotANumber );
-					return false;
-				}
-				var q = parseInt(st.se[0][st.se[0].selectedIndex].getAttribute('quantity'));
-				if(v < q) {
-					st.showWarn( st.config.textLessThan, q );
-					return false;
-				}
-				// 联动 unit
-				for(i=0, l=st.ue.length; i<l; i++) {
-					st.ue[i].innerHTML = v > 1 ? 'Lots' : 'Lot';
-				}
-				st.hideWarn();
-				return true;
-			},
-			// 联动数据
-			setValue : function(o) { // o : 下拉框
-				var si = o.selectedIndex;
-				var q = o[si].getAttribute('quantity');
-
-				// 联动 select
-				for(var i=0, l=this.se.length; i<l; i++) {
-					if(this.se[i] == o) continue;
-					this.se[i].value = o.value;
-				}
-
-				// 联动 tables
-				if(this.currentTable != this.te[si]) {
-					this.te[si].style.display = '';//alert(this.te[si].id);
-					this.currentTable.style.display = 'none';
-					this.currentTable = this.te[si];
-				}
-				if(this.edited) { // 用户编辑过
-					this.validate.call(o.form, this);
-				} else {
-					// 联动 input
-					for(i=0, l=this.qe.length; i<l; i++) {
-						this.qe[i].value = o[si].getAttribute('quantity');
-					}
-	
-					// 联动 unit
-					for(i=0, l=this.ue.length; i<l; i++) {
-						var c = o[si].getAttribute('quantity');
-						this.ue[i].innerHTML = c > 1 ? 'Lots' : 'Lot';
-					}
-				}
-			},
-			/** 
-			 * 显示警告
-			 * @param content  : 警告内容.必须
-			 * @param quantity : 是否要显示最小起订数(将content 中的 % 替换掉).
-			 */
-			showWarn : function(content, quantity) {
-				if(typeof quantity != 'undefined')
-					content = content.replace('%', quantity);
-				for(var i=0; i<this.warnbox.length; i++) {
-					this.warnbox[i].innerHTML = content;
-					this.warnbox[i].style.display = 'block';
-				}
-			},
-			hideWarn : function() {
-				for(var i=0; i<this.warnbox.length; i++) {
-					this.warnbox[i].style.display = 'none';
-				}
-			}
-		};
-
-		AE.widget.tabs = function() {
-			this.defConfig = {
-				tabId        : 'tabs',
-				contentIds : [ // 由于选中的标题要隐藏，需要标题保持<h3 class="title-cO">格式
-							  	'tab-details',
-							 	'tab-s-p',
-								'tab-p-o'
-							 ]
-			};
-			this.config = this.defConfig;
-		};
-		AE.widget.tabs.prototype = {
-			init : function() {
-				this.tabs = get(this.config.tabId).getElementsByTagName('li');
-				var _this = this;
-
-				for(var i=0, l=this.tabs.length; i<l; i++)
-					this.tabs[i].index = i;
-
-				this.contents = [];
-				for(i=0, l=this.config.contentIds.length; i<l; i++) {
-					var d = get(this.config.contentIds[i]);
-					var h = YUD.getElementsByClassName( 'title-cO', 'h3', d );
-					if( h.length > 0)
-						d._head = h[0]; // 保存对标题的引用
-
-					this.contents.push( d );
-				}
-				
-				
-				// 去掉链接虚线
-				for(i=0, l=this.tabs.length; i<l; i++ ) {
-					var a = this.tabs[i].getElementsByTagName('a')[0];
-					a.hideFocus = true; // IE
-					a.style.outline = 'none'; // W3C
-				}
-				
-				YUD.addClass(this.tabs[0], 'current');
-				this.currentTab = this.tabs[0];
-				
-				YUE.on(this.tabs, 'click', function() {
-					if(_this.currentTab == this) return;
-					YUD.addClass(this, 'current');
-					YUD.removeClass(_this.currentTab, 'current');
-					_this.currentTab = this;
-
-					for(var i=0, l=_this.contents.length; i<l; i++) {
-						//_this.contents[i].style.display = i<this.index ? 'none' : '';
-						//if(_this.contents[i]._head)
-						//	_this.contents[i]._head.style.display = i<this.index ? '' : 'none';
-						if(i < this.index) {
-							_this.contents[i].style.display = 'none';
-							
-						} else if(i == this.index) {
-							_this.contents[i].style.display = '';
-							if(_this.contents[i]._head)
-								_this.contents[i]._head.style.display = 'none';
-						} else {
-							if(_this.contents[i]._head) {
-								_this.contents[i]._head.style.display = '';
-							}
-						}
-					}
-				});
-			}
-		};
-
-		YUE.onDOMReady(function(){
-			(new AE.widget.selectTable()).init();
-			(new AE.widget.tabs()).init();
-		});
-	</script>
+    <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/detail.js" charset="utf-8"></script>
 <!--	<script language="JavaScript" type="text/javascript">
     try{document.domain="alibaba.com";}catch(E){}
     </script>-->
@@ -257,28 +60,43 @@
     	<h1 id="product-name">30%OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress</h1>
       <div class="col-main">
         <div class="main-wrap">
-              <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">2,050.20 - 3,180.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
-              <p class="quantity dashed-border-bottom clearfix">
-                <span class="p1">1000 Pieces / lot</span>
-                <span class="p2">US$2050.02 - 3180.00 / Pieces</span>
-                <span class="p3">Min. order : 1000 lots</span>
-              </p>
 <!--          单卖情况下显示：    <p class="quantity single dashed-border-bottom clearfix">
                 <span class="p3">Min. order : 1000 lots</span>
               </p>-->
+        <script type="text/javascript">
+		YUE.onDOMReady(function(){
+			(new AE.widget.selectTable({
+										selectElementClass : 'standard-select',   // 联动下拉框 class
+										unitClass          : 'standard-unit',     // 单位　Element class
+										quantityClass      : 'standard-quantity', // 数量 input class
+										detailClass        : 'price-detail',      // 价格属性及价目表 wrapper class
+										buyformClass       : 'buyform',           // 表单 class
+										warnClass          : 'warn',              // 警示框 class
+										unit               : ['Lot','Lots'], // 单位名称(单数/复数)
+										textLessThan       : 'Please try again! The mininum order for this product is % #.',
+										textNotANumber     : 'Please try again! The quantity must be a number.'
+									   })).init();
+		});
+		</script>
              <form action="javascript:alert('通过检测，提交到服务器！！');" class="buyform">
-              <p class="standard">Product Optiors: <select id="standard-1" class="standard-select">
-                    <option value="1" quantity="3">1G</option>
-                    <option value="2" quantity="1">2G</option>
-                    <option value="3" quantity="10">3G</option>
+              	<p class="standard">Product Options: <select id="standard-1" class="standard-select">
+                    <option value="1" minquantity="3" minprice="47" maxprice="58">1G</option>
+                    <option value="2" minquantity="1" minprice="48" maxprice="53">2G</option>
+                    <option value="3" minquantity="10" minprice="47" maxprice="43">3G</option>
                 </select></p>
-              <div id="standard-tables" class="detail">
+              <div class="price-detail">
+                  <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">53.00 - 58.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
+                  <p class="quantity dashed-border-bottom clearfix">
+                    <span class="p1">3 Pieces / lot</span>
+                    <span class="p2">US$17.67 - 19.33 / Pieces</span>
+                    <span class="p3">Min. order : 3 lots</span>
+                  </p>
                 <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
-                      <th><p>Quantity Range (Lot)</p></th>
-                      <th><p>Price (Per Lot)</p></th>
-                      <th><p>Processing Time (Days)</p></th>
+                      <th width="150"><p>Quantity Range (Lot)</p></th>
+                      <th width="100"><p>Price (Per Lot)</p></th>
+                      <th><p>Delivery Time(Day)</p></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -309,79 +127,88 @@
                       </tr>
                     </tbody>
                   </table>
-                  
+                  </div>
+                 <div class="price-detail" style="display:none;">
+                  <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">48.00 - 53.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
+                  <p class="quantity dashed-border-bottom clearfix">
+                    <span class="p1">5 Pieces / lot</span>
+                    <span class="p2">US$9.60 - 10.60 / Pieces</span>
+                    <span class="p3">Min. order : 1 lot</span>
+                  </p>
                 <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
-                      <th><p>Quantity Range (Lot)</p></th>
-                      <th><p>Price (Per Lot)</p></th>
+                      <th width="150"><p>Quantity Range (Lot)</p></th>
+                      <th width="100"><p>Price (Per Lot)</p></th>
                       <th><p>Processing Time (Days)</p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><p>1-8</p></td>
-                      <td><p>US $fdsafdsaf 58.00</p></td>
-                      <td><p>5dfbagsd</p></td>
+                      <td><p>1-10</p></td>
+                      <td><p>US $ 53.00</p></td>
+                      <td><p>8</p></td>
                       </tr>
                     <tr>
-                      <td><p>1dsavavdv1-20</p></td>
-                      <td><p>USvasvsda $ 50.00</p></td>
-                      <td><p>1vdsafdsaf4</p></td>
+                      <td><p>11-20</p></td>
+                      <td><p>US $ 50.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     <tr>
-                      <td><p>21dsafdsav50</p></td>
-                      <td><p>USfdsafdsa $ 48.00</p></td>
-                      <td><p>1sdaf4</p></td>
-                      </tr>
-                    <tr>
-                      <td><p>51safsdaf-100</p></td>
-                      <td><p>UfsdafdsaS $ 47.00</p></td>
-                      <td><p>1fdasfdsaf4</p></td>
+                      <td><p>21-50</p></td>
+                      <td><p>US $ 48.00</p></td>
+                      <td><p>18</p></td>
                       </tr>
                     </tbody>
                   </table>
-                  
+                  </div>
+                   <div class="price-detail" style="display:none;">
+                  <div class="detail-price-1"><span class="m-name">US$</span><span class="font-price-sXcR">43.00 - 50.00</span><span class="separator">/</span> <span class="unit">Lot</span></div>
+                  <p class="quantity dashed-border-bottom clearfix">
+                    <span class="p1">8 Pieces / lot</span>
+                    <span class="p2">US$5.38 - 6.25 / Pieces</span>
+                    <span class="p3">Min. order : 10 lots</span>
+                  </p>
                 <table class="table-list-a standard-tables">
                   <thead>
                     <tr>
-                      <th><p>Quantity Range (Lot)</p></th>
-                      <th><p>Price (Per Lot)</p></th>
+                      <th width="150"><p>Quantity Range (Lot)</p></th>
+                      <th width="100"><p>Price (Per Lot)</p></th>
                       <th><p>Processing Time (Days)</p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><p>10-20</p></td>
-                      <td><p>FDSAFSDAF</p></td>
-                      <td><p>GFSGFDG</p></td>
+                      <td><p>US $ 50.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     <tr>
-                      <td><p>HFDSGFG</p></td>
-                      <td><p>GHFDGFSAG</p></td>
-                      <td><p>HFSDGFAG</p></td>
+                      <td><p>21-50</p></td>
+                      <td><p>US $ 48.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     <tr>
-                      <td><p>HFGFASGDS</p></td>
-                      <td><p>UGHFDGFD</p></td>
-                      <td><p>1GSAGSDAG</p></td>
+                      <td><p>51-100</p></td>
+                      <td><p>US $ 47.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     <tr>
-                      <td><p>GDSAG</p></td>
-                      <td><p>GSAGSDA</p></td>
-                      <td><p>GSA</p></td>
+                      <td><p>101-200</p></td>
+                      <td><p>US $ 45.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     <tr>
-                      <td><p>GDASGS</p></td>
-                      <td><p>JHJFDJ/td>
-                      <td><p>1FDHG4</p></td>
+                      <td><p>201-300</p></td>
+                      <td><p>US $ 43.00</p></td>
+                      <td><p>14</p></td>
                       </tr>
                     </tbody>
                   </table>
                 </div><!-- .detail -->
-              	<div id="no-longer-available" class="board alertA">
+              <div id="no-longer-available" class="board alertA">
 					<strong class="important-words">Sorry, this item is no longer available!</strong>
-                    <a href="#">Click hera</a> to view similar products.
+                    <a href="#">Click here</a> to view similar products.
                 </div>
                 </form>
           	</div>
@@ -409,42 +236,8 @@
                 <div class="zoom-in"><a href="#" id="companyProductItemDesc">View Larger Image : 30% OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress all sizes</a></div>
             </div>
           </div>
-          <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
-          <script type="text/javascript">
-				(function(){
-					var aSetBigImageSrc = [
-					'/images4demo/p1.jpg',
-					'/images4demo/p2.jpg',
-					'/images4demo/p3.jpg',
-					'/images4demo/p4.jpg',
-					'/images4demo/p5.jpg',
-					'/images4demo/p6.gif'];
-					var fConfig = {
-							sImgDescTargetId: 'companyProductItemDesc',
-							sTabClass: 'image-nav-item',
-							sItemClass: 'image-item',
-							oParentNode: get('companyProductShowId'),
-							aContainerWH: [250,250],
-							aPreviewImgWH: [35,35],
-							aImgSrc: aSetBigImageSrc,
-							aImgHref: 'javascript:location.href=getUrlPer("http://www.alibaba.com/product-gs/202775529/11_5_inch_portable_DVD_player/showimage.html");',
-							sSwitchEvent: "mouseover",
-							sCurrentClass: "current",
-							bNeedAdjust : false
-					}
-					var productShowA = new AE.widget.dynamicImagesShow();
-					productShowA.init(fConfig);
-					var aContainers = YUD.getElementsByClassName('image-item','div',get('companyProductShowId'));
-					var targetContainer = aContainers[aContainers.length - 1];
-					YUE.removeListener(targetContainer,'click');
-					YUE.on(targetContainer,'click',function(ev){
-						YUE.stopEvent(ev);
-						turning($pn + 1, 'next');
-					});
-				})();
-			</script>
         </div>
-      	      	<div id="sidebar" class="col-extra box-tA box-tAcG">
+      	<div id="sidebar" class="col-extra box-tA box-tAcG">
         	<div class="top">
                 <div class="tl"></div>
                 <div class="tr"></div>
@@ -473,7 +266,7 @@
                             <li class="l1"><a rel="nofollow" href="javascript:alitalkEncryptNew('8pctgRBMALMdNVs5V+7i468ZDl++n9gA','1','50136307')" id="talkId14" class="atm32" title="TradeManager">I'm online<br/>Chat now!</a>
                             	<a id="mail" href="#">Contact Now </a>
                             </li>
-                            <li class="l2">Contact Person: <br />Charile chidsd fremaner<img src="http://img.alibaba.com/images/eng/style/icon/add_contact.gif" alt="" /></li>
+                            <li class="l2">Contact Person: <br />Charile chidsd fremaner<a href="#"><img src="http://img.alibaba.com/images/eng/style/icon/add_contact.gif" alt="" /></a></li>
                         </ul>
                     </div>
                 </div><!-- .mc -->
@@ -500,20 +293,22 @@
 </div>
 
 <div id="tab-details">
-    <table>
-    	<tr>
-        	<td>Place of Origin: Guangdong, China</td>
-        	<td>Memory Size: 1G, 2G, 4G 512MB</td>
-        	<td>Brand Name: Daqoqin</td>
-        </tr>
-    	<tr>
-        	<td>Color: red</td>
-        	<td>Model Number: # 1234567</td>
-        	<td>Music Format: MP3, WMA, AVI</td>
-        </tr>
-    </table>
+	<div class="detail">
+        <table>
+            <tr>
+                <td>Place of Origin: Guangdong, China</td>
+                <td>Memory Size: 1G, 2G, 4G 512MB</td>
+                <td>Brand Name: Daqoqin</td>
+            </tr>
+            <tr>
+                <td>Color: red</td>
+                <td>Model Number: # 1234567</td>
+                <td>Music Format: MP3, WMA, AVI</td>
+            </tr>
+        </table>
+    </div>
+	<img src="/images4demo/content.gif" align="" />
 </div><!-- #tab-details -->
-
 
 <div id="tab-s-p">
 	<h3 class="title-cO">Shipping &amp; Packaging</h3>
@@ -534,7 +329,7 @@
                 <tbody>
                     <tr>
                         <th>EMS</th>
-                        <td>Free Shipping(Seller Paid)</td>
+                        <td>Free Shipping</td>
                         <td>7-12 Days</td>
                     </tr>
                     <tr>
@@ -550,7 +345,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="table-a">
+            <table class="table-a" style="display:none;">
                 <thead>
                     <tr>
                         <th>Supported Shipping Type</th>
@@ -561,7 +356,7 @@
                 <tbody>
                     <tr>
                         <th>EMS</th>
-                        <td>Free Shipping(Seller Paid)</td>
+                        <td>Free Shipping</td>
                         <td>7-12 Days</td>
                     </tr>
                     <tr>
@@ -593,29 +388,6 @@
                 </ul>
             </fieldset>
         </div><!-- .packaging-info -->
-        <script type="text/javascript">
-			(function(){
-				var selectElement = get('countries');
-				var tables = get('tab-s-p').getElementsByTagName('table');
-				var flag = get('flag');
-				var index = selectElement.selectedIndex;
-				for(var i=0, l=tables.length; i<l; i++ ) {
-					if(i != selectElement.selectedIndex)
-						tables[i].style.display = 'none';
-				}
-				selectElement.currentTable = tables[index];
-				flag.className = 'css_flag_s ' + selectElement[index].getAttribute('flag');
-				
-				YUE.on(selectElement, 'change', function(){
-					if(this.currentTable) {
-						this.currentTable.style.display = 'none';
-					}
-					tables[this.selectedIndex].style.display = '';
-					this.currentTable = tables[this.selectedIndex];
-					flag.className = 'css_flag_s ' + selectElement[this.selectedIndex].getAttribute('flag');
-				 });
-			})();
-		</script>
     </div>
 </div><!-- #tab-s-p -->
 <div id="tab-p-o">
@@ -669,6 +441,7 @@
                     </tr>
                 </tbody>
             </table>
+            <p class="remark required">Acctually, the payment method that you can choose depends on sellers receipt account type.</p>
         </div>
     </div>
 </div><!-- #tab-p-o -->
@@ -691,19 +464,19 @@
         	<div class="buy-now">
             	<h3>Buy Now</h3>
                 <div class="content">
-                	<form class="buyform" onsubmit="return false;">
+                	<form action="javascript:alert('通过检测，提交到服务器！');" class="buyform" onsubmit="return false;">
                     	<table>
                         	<tr>
                             	<th><label for="standard-2">Standard:</label> </th>
-                            	<td><select id="standard-2" class="standard-select">
-                                    <option quantity="10" value="1">1G</option>
-                                    <option quantity="1" value="2">2G</option>
-                                    <option quantity="3" value="3">3G</option>
+                            	<td><select id="standard-2" class="standard-select" disabled="disabled">
+                                    <option minquantity="10" value="1">1G</option>
+                                    <option minquantity="1" value="2">2G</option>
+                                    <option minquantity="3" value="3">3G</option>
                                 </select></td>
                             </tr>
                             <tr>
                             	<th><label for="bd-quantity">Quantity:</label> </th>
-                                <td><input type="text" name="quantity" id="bd-quantity" value="1" class="standard-quantity" /> <span class="standard-unit">Lot</span></td>
+                                <td><input type="text" name="quantity" id="bd-quantity" value="1" class="standard-quantity" disabled="disabled" /> <span class="standard-unit">Lot</span></td>
                             </tr>
                             <tr>
                             	<td></td>
@@ -713,7 +486,7 @@
                             </tr>
                             <tr>
                             	<td>&nbsp;</td>
-                                <td><input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-disabled.gif" disabled="disabled" alt="Buy Now!" /></td>
+                                <td><input type="image" src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-disabled.gif" alt="Buy Now!" disabled="disabled" /></td>
                             </tr>
                         </table>
                     </form>
@@ -721,8 +494,8 @@
             </div><!-- .buy-now -->
             
             <div class="contact-seller dashed-border-left">
-            	<h3>Contact the Supplier</h3>
                 <span class="or">OR</span>
+            	<h3>Contact the Supplier</h3>
                 <div class="contact-info">
                 	<div class="member-photo">
                         <img src="/images4demo/face.gif" alt="" />
@@ -762,48 +535,49 @@
     <div class="middle">
     	<div class="ml"></div>
         <div class="mr"></div>
-        <div class="mc"></div>
+        <div class="mc">
             <div class="listA clearfix">
                 <ul>
                     <li>
                         <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
                         <h4><a href="#">2009 </a></h4>
+                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">250.20 - 380.00</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+                        <p class="count">10 pieces / lot</p>
+                    </li>
+                    <li>
+                        <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
+                        <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
                         <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2,050.20 - 3,180.00</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
                         <p class="count">10 pieces / lot</p>
                     </li>
                     <li>
                         <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
                         <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
-                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">200.20 - 800.00</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
                         <p class="count">10 pieces / lot</p>
                     </li>
                     <li>
                         <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
                         <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
-                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">100.50 - 200.30</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
                         <p class="count">10 pieces / lot</p>
                     </li>
                     <li>
                         <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
                         <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
-                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
-                        <p class="count">10 pieces / lot</p>
-                    </li>
-                    <li>
-                        <a href="#"><img src="/images4demo/p1.gif" alt="" /></a>
-                        <h4><a href="#">2009 fashionable New style Sexy Bride</a></h4>
-                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">2050.2 - 3180.0</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
+                        <p class="the_preice"><span class="m-name">US$</span><span class="font-price-sMcR">210.20 - 312.00</span> <span class="separator">/</span> <span class="unit">Lot</span></p>
                         <p class="count">10 pieces / lot</p>
                     </li>
                 </ul>
             </div>
-		</div>
-        <div class="bottom">
-            <div class="bl"></div>
-            <div class="br"></div>
-            <div class="bc"></div>
         </div>
-    </div><!-- #tab-r-p -->
+	</div>
+    <div class="bottom">
+        <div class="bl"></div>
+        <div class="br"></div>
+        <div class="bc"></div>
+    </div>
+</div><!-- #tab-r-p -->
 
 </div><!-- #related-products -->
 
