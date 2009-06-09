@@ -16,9 +16,6 @@
 		@import url("http://style.alibaba.com/css/4v/wholesale/common.css?c=200905311412.css");
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
 		@import url("http://style.alibaba.com/css/4v/wholesale/list.css?c=200905311412.css");
-		
-        #other-categories .middle .mc{ padding:10px; }
-        #other-categories .middle a{ width:49.5%; float:left; display:block; text-decoration:none; font-weight:bold; padding:3px 0; }
     </style>
     <!-- #EndEditable -->
 
@@ -59,55 +56,222 @@
     <div class="col-main">
       <div id="main-wrap" class="main-wrap">
       
-		<h1 id="result-info" style="">
-        	<strong>0</strong> results in China for <em>ABCDEFG</em> :
+		<h1 id="result-info">
+        	<strong>0</strong> results in China for <em>MP3</em> :
         </h1>
-        
+
+        <div id="filter">
+        	<form id="filter-form" method="get" action="target-action">
+        		Quantity: <input id="filter-quantity" />
+                <div id="filter-quantity-box" style="display:none;">
+                    <a>1</a>
+                    <a>5</a>
+                    <a>10</a>
+                    <a>15</a>
+                    <a>20</a>
+                    <a>30</a>
+                    <a>50</a>
+                </div>
+
+                Price Per Unit: US$
+                <span id="filter-price">
+                <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                </span>
+                <div id="filter-price-box" style="display:none;">
+                    <a>$0 - $25</a>
+                    <a>$25 - $50</a>
+                    <a>$50 - $100</a>
+                    <a>$100 - $200</a>
+                    <a>$200 and above</a>
+                </div>
+                
+                <input id="filter-submit" type="submit" value="" />
+                
+                China Province:
+                <select>
+					<option>Select</option>
+                </select>
+            </form>
+        </div>
+		<script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+            get("filter").filter = (new AE.run.wholesale.list.filter()).init();
+        //]]>
+        </script>
+
+
+
+
+        <ul id="toolbar">
+            <li id="view-mode" class="mode">
+                View: <a id="view-list-mode" class="list-mode" href="list-A.html"></a>
+                <a id="view-thumb-mode" class="thumb-mode" href="list-B.html"></a>
+            </li>
+            <li class="shipping">
+            	Free Shipping to : 
+                <select id="free-shipping-selector">
+					<option>Select</option>
+                </select>
+            </li>
+            <li class="sort">
+            	Sory by : 
+                <select id="sort-selector">
+                	<option>Best match</option>
+					<option>Time Remaining (End Date)</option>
+                    <option>Price (Lowest)</option>
+                    <option>Date Added (Newest)</option>
+                </select>
+            </li>
+            <li class="left-corner"></li><li class="right-corner"></li>
+        </ul>
+
+
         <div class="board infoA">
                 <span class="m">
-                <strong>Sorry</strong>, No Products Matches were Found for <span id="userSearchKeywords" class="keywords">ABCDEFG</span>.
+                <strong>Sorry</strong>, <strong style="color:#F60;">0</strong> Products Matches were Found for you Refinements.
                 </span>
-                <br />
-                Maybe you can change your keywords and search again.
-                <br />
-                or, you can search " mp4 " on <a href="#">Alibaba.com</a>
-         </div>
-
-        <div id="other-categories" class="box-tA box-tAcG">
-            <div class="top">
-                <div class="tl"></div>
-                <div class="tr"></div>
-                <div class="tc">
-                    <h2>Take a look at categories</h2>
-                </div>
-            </div>
-            
-            <div class="middle">
-                <div class="ml"></div>
-                <div class="mr"></div>
-                <div class="mc clearfix">
-                    <a href="#">Agriculture</a>
-                    <a href="#">Apparel</a>
-                    <a href="#">Automobiles & Motorcycles</a>
-                    <a href="#">Business Services</a>
-                    <a href="#">Agriculture</a>
-                    <a href="#">Apparel</a>
-                    <a href="#">Automobiles & Motorcycles</a>
-                    <a href="#">Business Services</a>
-                </div>
-            </div>
-            
-            <div class="bottom">
-                <div class="bl"></div>
-                <div class="br"></div>
-                <div class="bc"></div>
-            </div>
         </div>
+
+        
+        
+
+       <!--
+        <div id="bottom-search" style=" border: 1px solid #FFBA52; border-left:none; border-right:none; margin:10px 15px; background-color:#FFF2E1; padding:20px 0; ">
+            <div style=" width:452px; background:url(http://img.alibaba.com/images/eng/wholesale/bg/bottom-search-bg.gif) repeat-x; padding:1px 2px; border:1px solid #EC861A; margin:0 auto;" class="clearfix">
+            	<form id="bottom-search-form" name="bottom-search-form" method="get" action="target-action">
+                    <input id="bottom-search-input" style="width:375px; margin-top:2px; float:left; position:relative;" />
+                    <input id="bottom-search-submit" type="submit" style="float:left; margin-left:1px;" value="" />
+                </form>
+            </div>
+            
+        </div>
+         -->   
+
       </div>
     </div>
     
     <div class="col-sub">
-    	if ( BANNERS.length > 0 )
+    
+			<div id="refine-search">
+            	
+	        	<div class="title"><span>Refine Search</span></div>
+	            
+	        	<div id="refine-selected">
+                
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Categories</dt>
+	                        <dd><a class="first">Mobile Phone</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Categories</dt>
+	                    <dd><a>Mobile Phone</a></dd>
+	                </dl>
+	                
+	                <dl class="hover">
+	                	<div class="content">
+	                    	<dt>Memory Size</dt>
+	                        <dd><a class="first">16 GB</a></dd>
+	                        <dd><a>32 GB</a></dd>
+	                        <dd><a>64 GB</a></dd>
+	                        <dd><a>Any</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Memory Size</dt>
+	                    <dd><a>16 GB</a></dd>
+	                </dl>
+	
+	
+	                <dl class="hover">
+	                	<div class="content">
+	                        <dt>Music Format</dt>
+	                        <dd><a class="first">FLAC</a></dd>
+	                        <dd><a>APE</a></dd>
+	                        <dd><a>OGG</a></dd>
+	                        <dd><a>MP3</a></dd>
+	                        <dd><a>WMA</a></dd>
+	                        <dd><a>Any</a></dd>
+	                        <dd class="bottom-border"></dd>
+	                    </div>
+	                </dl>
+	                
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a>FLAC</a></dd>
+	                </dl>
+	                
+	                <div style="clear:both"></div>
+	            </div>
+				<script language="JavaScript" type="text/javascript">
+                //<![CDATA[
+                    get("refine-selected").refineSelected = (new AE.run.wholesale.list.refineSelected()).init();
+                //]]>
+                </script>
+
+	            <div id="refine-list">
+                	<a class="collapse-all" title="click me to collapse all items."></a>               
+	                <dl>
+	                    <dt>Function</dt>
+	                    <dd><a>USB Port <span>(1000)</span></a></dd>
+	                    <dd><a>FM Radio <span>(999)</span></a></dd>
+	                    <dd><a>A-B Repeat <span>(998)</span></a></dd>
+	                    <dd><a>Digital Voice Recorder <span>(997)</span></a></dd>
+	                    <dd><a>Card Reader <span>(996)</span></a></dd>
+	                    <dd><a>Movie Player <span>(100)</span></a></dd>
+	                    <dd><a>E-Book Reading <span>(99)</span></a></dd>
+	                    <dd><a>Games <span>(98)</span></a></dd>
+	                    <dd><a>Telephone Book <span>(97)</span></a></dd>
+	                    <dd><a>Photo Bank <span>(96)</span></a></dd>
+	                    <dd class="view-more-handle"><a><span class="view-more">View More</span></a></dd>
+                        <dd class="view-more-box">
+                            <a>512K <span>(10)</span></a>
+                            <a>256K <span>(9)</span></a>
+                            <a>128K <span>(8)</span></a>
+                            <a>64K <span>(7)</span></a>
+                        </dd>
+	                </dl>
+
+	                <dl>
+	                    <dt>Music Format</dt>
+	                    <dd><a>MP3 <span>(1000)</span></a></dd>
+	                    <dd><a>WMA <span>(999)</span></a></dd>
+	                    <dd><a>FLAC <span>(998)</span></a></dd>
+	                    <dd><a>APE <span>(997)</span></a></dd>
+	                    <dd><a>OGG <span>(222)</span></a></dd>
+	                </dl>
+                    
+	                <dl>
+	                    <dt>Standby Time </dt>
+	                    <dd><a>24 Hours <span>(1000)</span></a></dd>
+	                    <dd><a>12 Hours <span>(999)</span></a></dd>
+	                    <dd><a>6 Hours <span>(998)</span></a></dd>
+	                </dl>
+                    
+                    <!-- 超过3组属性 collapse -->
+	                <dl class="collapse">
+	                    <dt>PC Interface</dt>
+	                    <dd><a>USB 2.0 <span>(1000)</span></a></dd>
+	                    <dd><a>Bluetooth <span>(999)</span></a></dd>
+	                </dl>
+
+	            </div>
+				<script language="JavaScript" type="text/javascript">
+                //<![CDATA[
+					get("refine-list").refineSelected = (new AE.run.wholesale.list.refineList()).init();
+                //]]>
+                </script>
+
+                
+
+	    </div>
+
+
     </div>
   </div>
   
