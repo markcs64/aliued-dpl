@@ -91,15 +91,10 @@
 						});
 						
 						// 保存对 li 父元素的引用
-						img[j].li = {tagName : ''};
-						//alert( img[j].parentNode.tagName.toLowerCase() );
-						while( img[j].li.tagName.toLowerCase() != 'li' && img[j].li != document.body ) {
-							img[j].li = img[j].parentNode;
-						}
-						alert(img[j].li.className);
+						img[j].li = this.getParentByTagName(img[j], 'li');
+
 						// 默认选中第一个图片
-						
-						(j == 1 ? YUD.addClass : YUD.removeClass)(img[j], 'current');
+						(j == 0 ? YUD.addClass : YUD.removeClass)(img[j].li, 'current');
 						this.tImages.push(img[j]);
 					}
 				}
@@ -120,7 +115,14 @@
 			},
 			getParentByTagName : function(element, tagName) {
 				var p = element.parentNode;
-				while(p.tagName.toLowerCase())
+				while(true) {
+					if(p == document.body || p == document.documentElement) {
+						return null;
+					} else if(p.tagName.toLowerCase() == tagName) {
+						return p;
+					}
+					p = p.parentNode;
+				}
 			}
 		};
 
