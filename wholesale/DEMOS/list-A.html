@@ -62,7 +62,7 @@
 
         <div id="filter">
         	<form id="filter-form" method="get" action="target-action">
-        		Quantity: <input id="filter-quantity" />
+        		Quantity: <input id="filter-quantity" tabindex="20" />
                 <div id="filter-quantity-box" style="display:none;">
                     <a>1</a>
                     <a>5</a>
@@ -75,7 +75,7 @@
 
                 Price Per Unit: US$
                 <span id="filter-price">
-                <input id="filter-price-from"/> - <input id="filter-price-to"/>
+                <input id="filter-price-from" tabindex="20" /> - <input id="filter-price-to" tabindex="20" />
                 </span>
                 <div id="filter-price-box" style="display:none;">
                     <a>$0 - $25</a>
@@ -85,11 +85,11 @@
                     <a>$200 and above</a>
                 </div>
                 
-                <input id="filter-submit" type="submit" value="" />
+                <input id="filter-submit" type="submit" value="" tabindex="20" />
                 
                 China Province:
-                <select>
-					<option>Select</option>
+                <select tabindex="20">
+					<option>Select All</option>
                 </select>
             </form>
         </div>
@@ -109,13 +109,13 @@
             </li>
             <li class="shipping">
             	Free Shipping to : 
-                <select id="free-shipping-selector">
-					<option>Select</option>
+                <select id="free-shipping-selector" tabindex="20">
+					<option>Select All</option>
                 </select>
             </li>
             <li class="sort">
             	Sory by : 
-                <select id="sort-selector">
+                <select id="sort-selector" tabindex="20">
                 	<option>Best match</option>
 					<option>Time Remaining (End Date)</option>
                     <option>Price (Lowest)</option>
@@ -165,7 +165,7 @@
                         <strong>MP3</strong> player,music player USB flash disk,128MB/256MB/512MB/1GB/2GB/4GB built in flash memory...
                     </span>
                     <span class="shipping">
-                        <strong>FREE shipping</strong> ( All Countries )
+                        <strong>Free shipping</strong> ( All Countries )
                     </span>
                     <span class="address">
                         ZheJiang HZ Alibaba.com.
@@ -243,7 +243,7 @@
                     	mouse <strong>MP3</strong> Player Disney Mickey Mplayer style,best gifts Birthday 1G/2G/4G/8GB...  
                     </span>
                     <span class="shipping">
-                        <strong>FREE shipping</strong> ( Selected Countries )
+                        <strong>Free shipping</strong> ( Selected Countries )
                     </span>
                     <span class="address">
                         Shenzhen CREATIVE SKY Sales Department.
@@ -255,7 +255,47 @@
                     </span>
                 </div>
                 
-            </li>          
+            </li>     
+            
+  <li class="list-item">
+            
+                <div class="img">
+                	<div class="pic">
+                        <a class="picRind" href="detail.html"><img class="picCore" src="http://style.alibaba.com/images4demo/for-list-show.gif" /></a>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <span class="unit-price">
+                        US$<em class="font-price-sLcR">123.00 - 321.00</em> / Piece
+                    </span>
+                    <span class="min-order">Min. Order : 20 Pieces</span>
+                    <a class="buy-now" href="javascript:void(0);"><img src="http://img.alibaba.com/images/eng/wholesale/icon/buy-now-s.gif" /></a>
+                    <a rel="nofollow" id="talkId2" class="atm32" title="Chat with me now" href="javascript:void(0);">
+                    	I'm online<br/>Chat now!
+                    </a>
+                </div>
+            
+                <div class="detail">
+                    <h2><a href="detail.html">shortTitle</a></h2>
+                    <span class="time-remark">Time Remaining: 20days</span>
+                    <span class="brief">
+                    	mouse <strong>MP3</strong> Player Disney Mickey Mplayer style,best gifts Birthday 1G/2G/4G/8GB...  
+                    </span>
+                    <span class="shipping">
+                        <strong>Free shipping</strong> ( Selected Countries )
+                    </span>
+                    <span class="address">
+                        Shenzhen CREATIVE SKY Sales Department.
+                    </span>
+                    <span class="legend">
+    					<a href="javascript:void(0);">
+                        	<img border="0" align="absmiddle" src="http://img.alibaba.com/images/eng/style/icon/icon_gold_suppliers.gif"/>
+                        </a>
+                    </span>
+                </div>
+                
+            </li>                      
 
 		</ul>
 
