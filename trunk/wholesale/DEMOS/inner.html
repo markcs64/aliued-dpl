@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>{ 自定义标题 }</title>
+  	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="{ 自定义 }" />
+	<meta name="description" content="{ 自定义 }" />
+	<style type="text/css" media="all">
+		/* just  for  dw    online instead css*/
+		@import url(http://style.alibaba.com/css/4v/navigat.css?c=200805251525.css); 
+		@import url(http://style.alibaba.com/css/4v/common.css?c=200803251525.css); 
+		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
+		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
+    </style>
+	<!-- InstanceBeginEditable name="css" -->
+	<style type="text/css" media="all">
+        @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
+        @import url("http://style.alibaba.com/css/4v/wholesale/images.css");
+    </style>
+    <!-- InstanceEndEditable -->
+
+    <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
+    
+    <!-- InstanceBeginEditable name="js" -->
+    <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
+    <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/detail.js" charset="utf-8"></script>
+<!--	<script language="JavaScript" type="text/javascript">
+    try{document.domain="alibaba.com";}catch(E){}
+    </script>-->
+
+</head>
+<body>
+
+    <div id="main" class="new-6-images">
+    	<ul id="ctrlbar">
+        	<li class="zoom-in">Zoom in</li>
+        	<li class="zoom-out">Zoom out</li>
+        	<li class="reset">Reset</li>
+        </ul>
+        <div id="display">
+        	<div class="image-nav">
+                <ul>
+                    <li><a href="#"><img src="/images4demo/p22.jpg" /></a></li>
+                    <li><a href="#"><img src="/images4demo/p23.jpg" /></a></li>
+                    <li><a href="#"><img src="/images4demo/p24.jpg" /></a></li>
+                    <li><a href="#"><img src="/images4demo/p1.jpg" /></a></li>
+                    <li class="current"><a href="#"><img src="/images4demo/p5.jpg" /></a></li>
+                    <li><a href="#"><img src="/images4demo/p6.gif" /></a></li>
+                </ul>
+            </div>
+<!--            <ul class="image">
+            	<li><img src="/images4demo/p22.jpg" /></li>
+                <li><img src="/images4demo/p23.jpg" /></li>
+                <li><img src="/images4demo/p24.jpg" /></li>
+                <li><img src="/images4demo/p1.jpg" /></li>
+                <li><img src="/images4demo/p5.jpg" /></li>
+                <li><img src="/images4demo/p6.gif" /></li>
+            </ul>-->
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+		AE.widget.imageDisplay = function(config) {
+			var defConfig = {
+				//containerId  : 'display',
+				navClass     : 'image-nav', // 
+				displayClass : 'image',     // 
+				minWidth     : 35,
+				minHeight    : 35
+			};
+			this.config = defConfig;
+			if( config ) {
+				for(var p in config) {
+					this.config[p] = config[p];
+				}
+			}
+		};
+		AE.widget.imageDisplay.prototype = {
+			init : function() {
+				var c = (typeof this.config.containerId != 'undefined') ? YUD.getElementsByClassName(this.config.navClass, 'div') :
+				YUD.getElementsByClassName(this.config.navClass, 'div', this.config.containerId);
+				
+				var _this = this;
+				this.tImages = []; // 缩略图
+				for(var i=0, j=0, img=[]; i<c.length; i++) {
+					img = c[i].getElementsByTagName('img');
+					for(j=0,l=img.length; j<l; j++) {
+						YUE.on(img[j], 'load', function() {
+							_this.adjust(this);
+						});
+						
+						// 保存对 li 父元素的引用
+						img[j].li = {tagName : ''};
+						//alert( img[j].parentNode.tagName.toLowerCase() );
+						while( img[j].li.tagName.toLowerCase() != 'li' && img[j].li != document.body ) {
+							img[j].li = img[j].parentNode;
+						}
+						alert(img[j].li.className);
+						// 默认选中第一个图片
+						
+						(j == 1 ? YUD.addClass : YUD.removeClass)(img[j], 'current');
+						this.tImages.push(img[j]);
+					}
+				}
+				if(this.tImages.length < 1) return false; // 没有缩略图
+
+				
+				
+			},
+			// 调整缩略图的大小和位置
+			adjust : function(img) {
+				if(img.width > img.height) {
+					img.width = this.config.minWidth;
+					// 通过调节 margin-top 来让图片垂直居中
+					img.style.marginTop = Math.ceil((this.config.minHeight - img.height)/2) + 'px';
+				} else {
+					img.height = this.config.minHeight;
+				}
+			},
+			getParentByTagName : function(element, tagName) {
+				var p = element.parentNode;
+				while(p.tagName.toLowerCase())
+			}
+		};
+
+		(new AE.widget.imageDisplay()).init();
+	</script>
+
+
+</div>
+    
+    
+</body>
+</html>
