@@ -4,26 +4,25 @@
   	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="{ 自定义 }" />
 	<meta name="description" content="{ 自定义 }" />
-	<style type="text/css" media="all">
-		/* just  for  dw    online instead css*/
-		@import url(http://style.alibaba.com/css/4v/navigat.css?c=200805251525.css); 
-		@import url(http://style.alibaba.com/css/4v/common.css?c=200803251525.css); 
-		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
-		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
-    </style>
-	<!-- InstanceBeginEditable name="css" -->
+
+    <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
+   	<!-- InstanceBeginEditable name="css" -->
 	<style type="text/css" media="all">
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
         @import url("http://style.alibaba.com/css/4v/wholesale/images.css");
     </style>
     <!-- InstanceEndEditable -->
-
-    <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
-    
     <!-- InstanceBeginEditable name="js" -->
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
-    <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
-    <script type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/detail.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://style.alibaba.com/js/library/dragdrop.js" charset="utf-8"></script>
+	<style type="text/css">
+		/*.image-nav ul{width:100px;margin:auto;}*/
+		* html{height:100%;overflow:hidden;}
+		* html body{overflow:auto;}
+	</style>
+
+<!--    <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/detail.js" charset="utf-8"></script>-->
 <!--	<script language="JavaScript" type="text/javascript">
     try{document.domain="alibaba.com";}catch(E){}
     </script>-->
@@ -31,13 +30,7 @@
 </head>
 <body>
 
-    <div id="main" class="new-6-images">
-    	<ul id="ctrlbar">
-        	<li class="zoom-in">Zoom in</li>
-        	<li class="zoom-out">Zoom out</li>
-        	<li class="reset">Reset</li>
-        </ul>
-        <div id="display">
+        <div id="display" class="new-6-images">
         	<div class="image-nav">
                 <ul>
                     <li><a href="#"><img src="/images4demo/p22.jpg" /></a></li>
@@ -48,14 +41,16 @@
                     <li><a href="#"><img src="/images4demo/p6.gif" /></a></li>
                 </ul>
             </div>
-<!--            <ul class="image">
-            	<li><img src="/images4demo/p22.jpg" /></li>
-                <li><img src="/images4demo/p23.jpg" /></li>
-                <li><img src="/images4demo/p24.jpg" /></li>
-                <li><img src="/images4demo/p1.jpg" /></li>
-                <li><img src="/images4demo/p5.jpg" /></li>
-                <li><img src="/images4demo/p6.gif" /></li>
-            </ul>-->
+            <div class="image">
+                <ul>
+                    <li><img src="/images4demo/p22.jpg" /></li>
+                    <li><img src="/images4demo/p23.jpg" /></li>
+                    <li><img src="/images4demo/p24.jpg" /></li>
+                    <li><img src="/images4demo/p1.jpg" /></li>
+                    <li><img src="/images4demo/p5.jpg" /></li>
+                    <li><img src="/images4demo/p6.gif" /></li>
+                </ul>
+            </div>
         </div>
 
     </div>
@@ -63,11 +58,14 @@
     <script type="text/javascript">
 		AE.widget.imageDisplay = function(config) {
 			var defConfig = {
-				//containerId  : 'display',
+				containerId  : 'display',
 				navClass     : 'image-nav', // 
 				displayClass : 'image',     // 
-				minWidth     : 35,
-				minHeight    : 35
+				tWidth       : 35,
+				theight      : 35,
+				minSize      : 40,
+				pSize        : 0.3, // 缩放比例
+				speed        : 0.3
 			};
 			this.config = defConfig;
 			if( config ) {
@@ -82,7 +80,7 @@
 				YUD.getElementsByClassName(this.config.navClass, 'div', this.config.containerId);
 				
 				var _this = this;
-				this.tImages = []; // 缩略图
+				this.tImages = []; // 缩略图( img )
 				for(var i=0, j=0, img=[]; i<c.length; i++) {
 					img = c[i].getElementsByTagName('img');
 					for(j=0,l=img.length; j<l; j++) {
@@ -92,25 +90,47 @@
 						
 						// 保存对 li 父元素的引用
 						img[j].li = this.getParentByTagName(img[j], 'li');
+						img[j].li.img = img[j];
 
 						// 默认选中第一个图片
 						(j == 0 ? YUD.addClass : YUD.removeClass)(img[j].li, 'current');
 						this.tImages.push(img[j]);
+						img[j].li.index = j; // 保存序号，和大图对应
+						
+						// 绑定事件
+						YUE.on(img[j].li, 'click', function() {_this.transform(this);});
+						
 					}
 				}
+				this.current = 0;
 				if(this.tImages.length < 1) return false; // 没有缩略图
 
-				
-				
+				this.dImages = []; // 大图( li )
+				c = (typeof this.config.containerId != 'undefined') ? YUD.getElementsByClassName(this.config.displayClass, 'div') :
+				YUD.getElementsByClassName(this.config.displayClass, 'div', this.config.containerId);
+				if(c && c.length > 0) {
+					this.dImages = c[0].getElementsByTagName('li');
+				} else {
+					return false;
+				}
+				for(i=0, l=this.dImages.length; i<l; i++) {
+					this.dImages[i].style.display = (i == 0 ? '' : 'none'); // 默认显示第一个
+					this.dImages[i].img = this.dImages[i].getElementsByTagName('img')[0];
+
+					this.dImages[i].img.oWidth = this.dImages[i].img.width; //  保存原始尺寸
+					this.dImages[i].img.oHeight = this.dImages[i].img.height;
+					this.dImages[i].img.ratio = this.dImages[i].img.width / this.dImages[i].img.height;
+					new YAHOO.util.DD(this.dImages[i].img);
+				}
 			},
 			// 调整缩略图的大小和位置
 			adjust : function(img) {
 				if(img.width > img.height) {
-					img.width = this.config.minWidth;
+					img.width = this.config.tWidth;
 					// 通过调节 margin-top 来让图片垂直居中
-					img.style.marginTop = Math.ceil((this.config.minHeight - img.height)/2) + 'px';
+					img.style.marginTop = Math.ceil((this.config.theight - img.height)/2) + 'px';
 				} else {
-					img.height = this.config.minHeight;
+					img.height = this.config.theight;
 				}
 			},
 			getParentByTagName : function(element, tagName) {
@@ -123,14 +143,77 @@
 					}
 					p = p.parentNode;
 				}
+			},
+			transform : function(li) {
+				if(this.current == li.index) {
+					//alert('已经选中' + li.index);
+					return true;
+				}
+				YUD.addClass( li, 'current' );
+				YUD.removeClass( this.tImages[this.current].li, 'current' );
+				
+				this.dImages[li.index].style.display = '';
+				this.dImages[this.current].style.display = 'none';
+				
+				this.current = li.index;
+				
+				this.reset();
+			},
+			// type : 0/1 -> 缩/放
+			zoom : function(type) {
+				if(typeof type != 'number') return false;
+				if(type != 0 && type != 1) return false;
+				var img = this.dImages[this.current].img;
+				if(!img) return false;
+				var _this = this;
+				var width = parseInt(YUD.getStyle(img, 'width')) || img.width;
+				var height = parseInt(YUD.getStyle(img, 'height')) || img.height;
+				var anim = new YAHOO.util.Anim();
+				if(img.ratio > 1) {
+					if(type == 0) {
+						if( width - this.config.pSize > this.config.minSize) {
+							anim.init(img, {
+								width: {to: parseInt(width * (1 - this.config.pSize))}
+							}, _this.config.speed);
+							anim.animate();
+
+						}
+					} else {
+						anim.init(img, {
+							width: {to: parseInt(width * (1 + this.config.pSize))}
+						}, _this.config.speed);
+						anim.animate();
+					}
+				} else {
+					if(type == 0) {
+						if( height - this.config.pSize > this.config.minSize) {
+							anim.init(img, {
+								height: {to: parseInt(height * (1 - this.config.pSize))}
+							}, _this.config.speed);
+							anim.animate();
+						}
+					} else {
+						anim.init(img, {
+							height: {to: parseInt(height * (1 + this.config.pSize))}
+						}, _this.config.speed);
+						anim.animate();
+					}
+				}
+			},
+			reset : function() {
+				var img = this.dImages[this.current].img;
+				YUD.setStyle(img, 'left', 0);
+				YUD.setStyle(img, 'top', 0);
+				YUD.setStyle(img, 'width', 'auto');
+				YUD.setStyle(img, 'height', 'auto');
 			}
 		};
 
-		(new AE.widget.imageDisplay()).init();
+		var images = new AE.widget.imageDisplay();
+		images.init();
+		//parent.
 	</script>
 
-
-</div>
     
     
 </body>
