@@ -9,7 +9,6 @@
 		@import url(http://style.alibaba.com/css/4v/navigat.css?c=200805251525.css); 
 		@import url(http://style.alibaba.com/css/4v/common.css?c=200803251525.css); 
 		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
-		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
     </style>
 	<!-- #BeginEditable "css" -->
 	<style type="text/css" media="all">
@@ -44,6 +43,62 @@
 
 
 <div id="page">
+
+
+<div id="search-bar" class="grid-c">
+<script src="http://style.alibaba.com/js/app/xSelector.js" type="text/javascript"></script>
+<script src="http://style.alibaba.com/js/app/intelligentSearch.js" type="text/javascript"></script>
+<script src="http://style.alibaba.com/js/app/searchbar.js" type="text/javascript"></script>
+    <div id="searchBar" class="searchBar skinHome">
+        <ul id="searchTabsBox">
+                <li class="current"><a id="product" href="javascript:void(0);" rel="nofollow" hint="Search Products">Products</a></li>
+                <li><a id="sell" href="javascript:void(0);" rel="nofollow" hint="Search Selling Leads">Selling Leads</a></li>
+                <li><a id="company" href="javascript:void(0);" rel="nofollow" hint="Search Suppliers">Suppliers</a></li>
+                <li><a id="buy" href="javascript:void(0);" rel="nofollow" hint="Search Buyers">Buyers</a></li>
+    
+        </ul>
+        <div class="searchBox">
+            <form id="SearchForm" name="SearchForm" action="" method="get" onsubmit="return false;">
+            <div id="searchIntelligent" class="intelligent">
+                <input id="SearchTextIdx" value="" type="text" name="SearchText" autocomplete="off"  />
+            </div>
+            <select id="searchCountry" name="Country"   dataName="country_home" >
+                <option value="">Select Country/Region</option>
+                <option value="">Show all</option>
+            </select>
+            <input id="searchIndexArea" name="IndexArea" type="hidden" value="product_en" />
+            <input id="searchSubmit" class="buttonSkinA" type="submit" value="Search" />
+            <input type="hidden" id="historyTab" /><input type="hidden" id="historySearchInput" /><input type="hidden" id="historySearchCountry" /><input type="hidden" name="ssk" value="y" />
+            </form>
+        </div>
+    </div>
+	<script language="JavaScript" type="text/javascript">
+        try{document.domain="alibaba.com";}catch(E){}
+        var searchBar = new AE.searchBar;
+        var config = {
+            setups : {
+                    product : { /*type : 'product' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'product_en' , submitFormWhenClicked : false },sell : { /*type : 'sell' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'offer_en' , submitFormWhenClicked : false },company : { /*type : 'company' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'company_en' , submitFormWhenClicked : false },buy : { /*type : 'buy' , */actionUrl : 'http://importer.alibaba.com:80/buyeroffers' , indexArea : 'offer_en' , submitFormWhenClicked : false }	},
+            fackSelectorConfig : {
+                    selectId: 'searchCategory',
+                    fakeSelectId: 'fakeSelectorBox',
+                    selectBoxWH: [244,20],
+                    selectBoxZIndex: 10000,
+                    optionBoxTop: '23px',
+                    arrowBoxLeft: '235px'
+            },
+            intelSearchConfig : {
+                url: 'http://connectkeyword.alibaba.com/lenoIframeJson.htm?iframe_delete=true',
+                inputElId: 'SearchTextIdx',
+                listCssClass: 'intelligentList',
+                listCssStyle: 'left:0px;top:'+(AE.bom.isIE?26:22)+'px;width:430px;z-index:777',
+                returnVarName: 'intelSearchData',
+                keyWordClass: 'boldKeword'
+            }
+        }
+        searchBar.init(config);
+    </script>
+</div>
+
 
 <!-- #BeginLibraryItem "/Library/crumb-a.lbi" -->
 <div id="aliGlobalCrumb" class="crumb global"> <a rel="nofollow" href="http://www.alibaba.com">Home</a> &gt; <a rel="nofollow" href="http://www.alibaba.com/catalogs/0/product.html">Products</a> &gt; </div>

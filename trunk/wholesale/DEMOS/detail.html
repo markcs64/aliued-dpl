@@ -9,12 +9,12 @@
 		@import url(http://style.alibaba.com/css/4v/navigat.css?c=200805251525.css); 
 		@import url(http://style.alibaba.com/css/4v/common.css?c=200803251525.css); 
 		@import url(http://style.alibaba.com/css/4v/relateJS.css?c=200803251525.css);
-		@import url(http://style.alibaba.com/css/4v/wholesale/common.css?c=200803251525.css);
     </style>
 	<!-- InstanceBeginEditable name="css" -->
 	<style type="text/css" media="all">
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
         @import url(http://style.alibaba.com/css/4v/countryFlag_s16.css);
+		@import url("http://style.alibaba.com/css/4v/wholesale/common.css?c=200905311412.css");
         @import url("http://style.alibaba.com/css/4v/wholesale/detail.css");
     </style>
     <!-- InstanceEndEditable -->
@@ -49,8 +49,64 @@
 
 <div id="page">
 
+
+<div id="search-bar" class="grid-c">
+<script src="http://style.alibaba.com/js/app/xSelector.js" type="text/javascript"></script>
+<script src="http://style.alibaba.com/js/app/intelligentSearch.js" type="text/javascript"></script>
+<script src="http://style.alibaba.com/js/app/searchbar.js" type="text/javascript"></script>
+    <div id="searchBar" class="searchBar skinHome">
+        <ul id="searchTabsBox">
+                <li class="current"><a id="product" href="javascript:void(0);" rel="nofollow" hint="Search Products">Products</a></li>
+                <li><a id="sell" href="javascript:void(0);" rel="nofollow" hint="Search Selling Leads">Selling Leads</a></li>
+                <li><a id="company" href="javascript:void(0);" rel="nofollow" hint="Search Suppliers">Suppliers</a></li>
+                <li><a id="buy" href="javascript:void(0);" rel="nofollow" hint="Search Buyers">Buyers</a></li>
+    
+        </ul>
+        <div class="searchBox">
+            <form id="SearchForm" name="SearchForm" action="" method="get" onsubmit="return false;">
+            <div id="searchIntelligent" class="intelligent">
+                <input id="SearchTextIdx" value="" type="text" name="SearchText" autocomplete="off"  />
+            </div>
+            <select id="searchCountry" name="Country"   dataName="country_home" >
+                <option value="">Select Country/Region</option>
+                <option value="">Show all</option>
+            </select>
+            <input id="searchIndexArea" name="IndexArea" type="hidden" value="product_en" />
+            <input id="searchSubmit" class="buttonSkinA" type="submit" value="Search" />
+            <input type="hidden" id="historyTab" /><input type="hidden" id="historySearchInput" /><input type="hidden" id="historySearchCountry" /><input type="hidden" name="ssk" value="y" />
+            </form>
+        </div>
+    </div>
+	<script language="JavaScript" type="text/javascript">
+        try{document.domain="alibaba.com";}catch(E){}
+        var searchBar = new AE.searchBar;
+        var config = {
+            setups : {
+                    product : { /*type : 'product' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'product_en' , submitFormWhenClicked : false },sell : { /*type : 'sell' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'offer_en' , submitFormWhenClicked : false },company : { /*type : 'company' , */actionUrl : 'http://www.alibaba.com:80/trade/search' , indexArea : 'company_en' , submitFormWhenClicked : false },buy : { /*type : 'buy' , */actionUrl : 'http://importer.alibaba.com:80/buyeroffers' , indexArea : 'offer_en' , submitFormWhenClicked : false }	},
+            fackSelectorConfig : {
+                    selectId: 'searchCategory',
+                    fakeSelectId: 'fakeSelectorBox',
+                    selectBoxWH: [244,20],
+                    selectBoxZIndex: 10000,
+                    optionBoxTop: '23px',
+                    arrowBoxLeft: '235px'
+            },
+            intelSearchConfig : {
+                url: 'http://connectkeyword.alibaba.com/lenoIframeJson.htm?iframe_delete=true',
+                inputElId: 'SearchTextIdx',
+                listCssClass: 'intelligentList',
+                listCssStyle: 'left:0px;top:'+(AE.bom.isIE?26:22)+'px;width:430px;z-index:777',
+                returnVarName: 'intelSearchData',
+                keyWordClass: 'boldKeword'
+            }
+        }
+        searchBar.init(config);
+    </script>
+</div>
+
+
 <!-- #BeginLibraryItem "/Library/crumb-a.lbi" -->
-<div id="aliGlobalCrumb" class="crumb global"> <a rel="nofollow" href="http://www.alibaba.com">Home</a> &gt; <a href="#">All Categories</a> &gt; <a href="#">Wedding Apparel &amp; Accessories</a> &gt; <a href="#">Wedding Dresses</a> &gt; <a href="#">Short sleeve</a> (1234)</div>
+<div id="aliGlobalCrumb" class="crumb global"> <a rel="nofollow" href="http://www.alibaba.com">Home</a> &gt; <a rel="nofollow" href="http://www.alibaba.com/catalogs/0/product.html">Products</a> &gt; </div>
 <!-- #EndLibraryItem -->
 
 
@@ -64,21 +120,6 @@
                 <span class="p3">Min. order : 1000 lots</span>
               </p>-->
               
-        <script type="text/javascript">
-		YUE.onDOMReady(function(){
-			(new AE.widget.selectTable({
-										selectElementClass : 'standard-select',   // 联动下拉框 class
-										unitClass          : 'standard-unit',     // 单位　Element class
-										quantityClass      : 'standard-quantity', // 数量 input class
-										detailClass        : 'price-detail',      // 价格属性及价目表 wrapper class
-										buyformClass       : 'buyform',           // 表单 class
-										warnClass          : 'warn',              // 警示框 class
-										unit               : ['Lot','Lots'], // 单位名称(单数/复数)
-										textLessThan       : 'Please try again! The mininum order for this product is % #.',
-										textNotANumber     : 'Please try again! The quantity must be a number.'
-									   })).init();
-		});
-		</script>
              <form action="javascript:alert('通过检测，提交到服务器！！');" class="buyform">
               	<p class="standard">Product Options: <select id="standard-1" class="standard-select">
                     <option value="1" minquantity="3">1G</option>
@@ -97,34 +138,34 @@
                     <tr>
                       <th width="150"><p>Quantity Range (Lot)</p></th>
                       <th width="100"><p>Price (Per Lot)</p></th>
-                      <th><p>Delivery Time(Day)</p></th>
+                      <th><p>Delivery Time</p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><p>3-5</p></td>
-                      <td><p>US $ 58.00</p></td>
-                      <td><p>5</p></td>
+                      <td><p>US$58.00</p></td>
+                      <td><p>5 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>6-10</p></td>
-                      <td><p>US $ 53.00</p></td>
-                      <td><p>8</p></td>
+                      <td><p>US$53.00</p></td>
+                      <td><p>8 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>11-20</p></td>
-                      <td><p>US $ 50.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$50.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>21-50</p></td>
-                      <td><p>US $ 48.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$48.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>51-100</p></td>
-                      <td><p>US $ 47.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$47.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     </tbody>
                   </table>
@@ -141,24 +182,24 @@
                     <tr>
                       <th width="150"><p>Quantity Range (Lot)</p></th>
                       <th width="100"><p>Price (Per Lot)</p></th>
-                      <th><p>Processing Time (Days)</p></th>
+                      <th><p>Delivery Time</p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><p>1-10</p></td>
-                      <td><p>US $ 53.00</p></td>
-                      <td><p>8</p></td>
+                      <td><p>US$53.00</p></td>
+                      <td><p>8 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>11-20</p></td>
-                      <td><p>US $ 50.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$50.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>21-50</p></td>
-                      <td><p>US $ 48.00</p></td>
-                      <td><p>18</p></td>
+                      <td><p>US$48.00</p></td>
+                      <td><p>18 Days</p></td>
                       </tr>
                     </tbody>
                   </table>
@@ -175,34 +216,34 @@
                     <tr>
                       <th width="150"><p>Quantity Range (Lot)</p></th>
                       <th width="100"><p>Price (Per Lot)</p></th>
-                      <th><p>Processing Time (Days)</p></th>
+                      <th><p>Delivery Time</p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><p>10-20</p></td>
-                      <td><p>US $ 50.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$50.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>21-50</p></td>
-                      <td><p>US $ 48.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$48.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>51-100</p></td>
-                      <td><p>US $ 47.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$47.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>101-200</p></td>
-                      <td><p>US $ 45.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$45.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     <tr>
                       <td><p>201-300</p></td>
-                      <td><p>US $ 43.00</p></td>
-                      <td><p>14</p></td>
+                      <td><p>US$43.00</p></td>
+                      <td><p>14 Days</p></td>
                       </tr>
                     </tbody>
                   </table>
@@ -232,6 +273,22 @@
                 </form>
           	</div>
         </div>
+        
+        <script type="text/javascript">
+		YUE.onDOMReady(function(){
+			(new AE.widget.selectTable({
+										selectElementClass : 'standard-select',   // 联动下拉框 class
+										unitClass          : 'standard-unit',     // 单位　Element class
+										quantityClass      : 'standard-quantity', // 数量 input class
+										detailClass        : 'price-detail',      // 价格属性及价目表 wrapper class
+										buyformClass       : 'buyform',           // 表单 class
+										warnClass          : 'warn',              // 警示框 class
+										unit               : ['Lot','Lots'], // 单位名称(单数/复数)
+										textLessThan       : 'Please try again! The mininum order for this product is % #.',
+										textNotANumber     : 'Please try again! The quantity must be a number.'
+									   })).init();
+		});
+		</script>
       <div class="col-sub">
         <div class="test-box-big">
           <div id="companyProductShowId" class="new-6-images">
@@ -325,7 +382,7 @@
             </tr>
         </table>
     </div>
-	<img src="/images4demo/content.gif" align="" />
+	<div id="custom-description"><img src="/images4demo/content.gif" align="" /></div>
 </div><!-- #tab-details -->
 
 <div id="tab-s-p">
@@ -413,29 +470,29 @@
     <div class="content">
     	<div class="safepay">
             <p>
-            	Alibaba Safepay is the safer, faster and easier way to pay online.<br />
-                Safepay tracks your order and releases payment to supplier only ofter you confirm delivery. It's also <strong>FREE</strong>!
+            	Your online transactions are safer, faster and easier with Alibaba Safe Pay! 
+                Safe Pay tracks your order and releases payment to supplier only after you confirm delivery.It's also <strong>FREE</strong>!
             </p>
             <ul class="steps clearfix">
                 <li class="s1">
                     <span>1</span>
-                    <h6>Buyer<br />Orders<br />Online</h6>
+                    <h6>Buyer<br />Orders Online</h6>
                 </li>
                 <li class="s2">
                     <span>2</span>
-                    <h6>Buyer<br />Pays<br />SafePay</h6>
+                    <h6>Buyer<br />Pays Safe Pay</h6>
                 </li>
                 <li class="s3">
                     <span>3</span>
-                    <h6>Supplier<br />Ships<br />Order</h6>
+                    <h6>Supplier<br />Ships Order</h6>
                 </li>
                 <li class="s4">
                     <span>4</span>
-                    <h6>Buyer<br />Confirms<br />Delivery</h6>
+                    <h6>Buyer<br />Confirms Delivery</h6>
                 </li>
                 <li class="s5">
                     <span>5</span>
-                    <h6>SafePay<br />Pays<br />Supplier</h6>
+                    <h6>Safe Pay<br />Pays Supplier</h6>
                 </li>
             </ul>
         </div>
