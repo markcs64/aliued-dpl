@@ -14,4 +14,10 @@ m 4v/myalibaba/escrow.css
 m 4v/myalibaba/escrow_zh_cn.css
 m 4v/tw.css
 m 4v/zh_CN.css
+
+
++ 4v/wholesale/common.css
++ 4v/wholesale/detail.css
++ 4v/wholesale/list.css
+
 }
