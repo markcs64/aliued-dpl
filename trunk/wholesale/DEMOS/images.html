@@ -21,8 +21,6 @@
 
 </head>
 <body>
-
-  
 	<div id="back-to-detail"><a href="detail.html">&lt;&lt;Back to Product Details</a></div>
 	<h1 id="product-name">Larger Image of: <a href="#">30%OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress</a></h1>
 	<div id="main">
@@ -32,7 +30,17 @@
         	<li class="reset" onclick="frames[0].images.reset()">Reset</li>
         </ul>
 	</div>
-    <iframe src="inner.html" frameborder="0" width="100%" height="650" scrolling="no"></iframe>
+    <iframe id="imageDisplay" src="inner.html" frameborder="0" width="100%" height="650" scrolling="no"></iframe>
+  	<script type="text/javascript">
+		var tImages = 
+			'<li><a href="#"><img src="/images4demo/p22.jpg" /></a></li><li><a href="#"><img src="/images4demo/p23.jpg" /></a></li><li><a href="#"><img src="/images4demo/p24.jpg" /></a></li><li><a href="#"><img src="/images4demo/p1.jpg" /></a></li><li><a href="#"><img src="/images4demo/p5.jpg" /></a></li><li><a href="#"><img src="/images4demo/p6.gif" /></a></li>';
 
+		var dImages = '<li><img src="/images4demo/p22.jpg" /></li><li><img src="/images4demo/p23.jpg" /></li><li><img src="/images4demo/p24.jpg" /></li><li><img src="/images4demo/p1.jpg" /></li><li><img src="/images4demo/p5.jpg" /></li><li><img src="/images4demo/p6.gif" /></li>';
+
+		var frame = get('imageDisplay');
+		YUE.on('imageDisplay', 'load', function() {
+			this.contentWindow.images.init(tImages, dImages);
+		});
+	</script>
 </body>
 </html>

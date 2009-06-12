@@ -4,61 +4,58 @@
   	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="{ 自定义 }" />
 	<meta name="description" content="{ 自定义 }" />
-
+  
     <link rel="shortcut icon" href="http://img.alibaba.com/favicon.ico" type="image/x-icon" />
-   	<!-- InstanceBeginEditable name="css" -->
 	<style type="text/css" media="all">
         @import url("http://style.alibaba.com/css/4v/grids.css?c=200905311412.css");
         @import url("http://style.alibaba.com/css/4v/wholesale/images.css");
     </style>
-    <!-- InstanceEndEditable -->
-    <!-- InstanceBeginEditable name="js" -->
+
     <script type="text/javascript" src="http://style.alibaba.com/js/ae.js?c=200905311412.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://style.alibaba.com/js/library/dragdrop.js" charset="utf-8"></script>
-	<style type="text/css">
-		/*.image-nav ul{width:100px;margin:auto;}*/
-		html{height:100%;overflow:hidden;}
-		* html body{height:100%;overflow:hidden;}
-	</style>
-
-<!--    <script src="http://style.alibaba.com/js/app/dynamic_images_show.js" type="text/javascript" charset="iso-8859-1"></script>
-    <script type="text/javascript" src="http://style.alibaba.com/js/run/wholesale/detail.js" charset="utf-8"></script>-->
-<!--	<script language="JavaScript" type="text/javascript">
-    try{document.domain="alibaba.com";}catch(E){}
-    </script>-->
 
 </head>
 <body>
+	<div id="head">
+        <div id="back-to-detail"><a href="detail.html">&lt;&lt;Back to Product Details</a></div>
+        <h1 id="product-name">Larger Image of: <a href="#">30%OFF Free Shipping Wedding Dresses Custom-Made White Vintage Bridal Dress</a></h1>
+    </div>
+	<div id="main">
+    	<ul id="ctrlbar">
+        	<li class="zoom-in">Zoom in</li>
+        	<li class="zoom-out">Zoom out</li>
+        	<li class="reset">Reset</li>
+        </ul>
+	</div>
 
-        <div id="display" class="new-6-images">
-        	<div class="image-nav">
-<!--                <ul>
-                    <li><a href="#"><img src="/images4demo/p22.jpg" /></a></li>
-                    <li><a href="#"><img src="/images4demo/p23.jpg" /></a></li>
-                    <li><a href="#"><img src="/images4demo/p24.jpg" /></a></li>
-                    <li><a href="#"><img src="/images4demo/p1.jpg" /></a></li>
-                    <li class="current"><a href="#"><img src="/images4demo/p5.jpg" /></a></li>
-                    <li><a href="#"><img src="/images4demo/p6.gif" /></a></li>
-                </ul>-->
-            </div>
-            <div class="image">
-                <!--<ul>
-                    <li><img src="/images4demo/p22.jpg" /></li>
-                    <li><img src="/images4demo/p23.jpg" /></li>
-                    <li><img src="/images4demo/p24.jpg" /></li>
-                    <li><img src="/images4demo/p1.jpg" /></li>
-                    <li><img src="/images4demo/p5.jpg" /></li>
-                    <li><img src="/images4demo/p6.gif" /></li>
-                </ul>-->
-            </div>
+    <div id="display" class="new-6-images">
+        <div class="image-nav">
+            <ul>
+                <li><a href="#"><img src="/images4demo/p22.jpg" /></a></li>
+                <li><a href="#"><img src="/images4demo/p23.jpg" /></a></li>
+                <li><a href="#"><img src="/images4demo/p24.jpg" /></a></li>
+                <li><a href="#"><img src="/images4demo/p1.jpg" /></a></li>
+                <li><a href="#"><img src="/images4demo/p5.jpg" /></a></li>
+                <li><a href="#"><img src="/images4demo/p6.gif" /></a></li>
+            </ul>
         </div>
+        <div class="image">
+            <ul>
+                <li><img src="/images4demo/p22.jpg" /></li>
+                <li><img src="/images4demo/p23.jpg" /></li>
+                <li><img src="/images4demo/p24.jpg" /></li>
+                <li><img src="/images4demo/p1.jpg" /></li>
+                <li><img src="/images4demo/p5.jpg" /></li>
+                <li><img src="/images4demo/p6.gif" /></li>
+            </ul>
+        </div>
+    </div>
 
     </div>
-    
+
     <script type="text/javascript">
 		AE.widget.imageDisplay = function(config) {
 			var defConfig = {
-				containerId  : 'display',
 				navClass     : 'image-nav', // 
 				displayClass : 'image',     // 
 				tWidth       : 35,
@@ -75,15 +72,12 @@
 			}
 		};
 		AE.widget.imageDisplay.prototype = {
-			init : function(tImages, dImages) {
+			init : function() {
 				var c = (typeof this.config.containerId != 'undefined') ? YUD.getElementsByClassName(this.config.navClass, 'div') :
 				YUD.getElementsByClassName(this.config.navClass, 'div', this.config.containerId);
-				//alert(parent);
 				var _this = this;
 				this.tImages = []; // 缩略图( img )
 				for(var i=0, j=0, img=[]; i<c.length; i++) {
-
-					c[i].innerHTML = '<ul>' + tImages + '<\/ul>';
 
 					img = c[i].getElementsByTagName('img');
 					for(j=0,l=img.length; j<l; j++) {
@@ -111,12 +105,12 @@
 				c = (typeof this.config.containerId != 'undefined') ? YUD.getElementsByClassName(this.config.displayClass, 'div') :
 				YUD.getElementsByClassName(this.config.displayClass, 'div', this.config.containerId);
 
-				c[0].innerHTML = '<ul>' + dImages + '<\/ul>';
-
 				if(c && c.length > 0) {
 					this.dImages = c[0].getElementsByTagName('li');
+					
 					// 调节大图显示区的高度
-					c[0].style.height = (document.documentElement.offsetHeight - parseInt( YUD.getStyle(c[0], 'top') ) + 'px');
+					c[0].style.height = (document.documentElement.offsetHeight - parseInt( YUD.getStyle(c[0], 'top') ) - 20 + 'px');
+					YUE.on(window, 'resize', function(){c[0].style.height = (document.documentElement.offsetHeight - parseInt( YUD.getStyle(c[0], 'top') ) - 20 + 'px');});
 				} else {
 					return false;
 				}
@@ -128,6 +122,34 @@
 					this.dImages[i].img.oHeight = this.dImages[i].img.height;
 					this.dImages[i].img.ratio = this.dImages[i].img.width / this.dImages[i].img.height;
 					new YAHOO.util.DD(this.dImages[i].img);
+						
+					// 去掉图片上的浮动按钮(不然缩放图片的时候会有闪烁现象-IE)
+					this.dImages[i].img.galleryImg = 'no';
+				}
+				
+				// 注册按钮事件
+				if(this.config.zoomInButtonClass) {
+					var zib = YUD.getElementsByClassName(this.config.zoomInButtonClass);
+					YUE.on(zib, 'click', function(){_this.zoom(1);});
+				}
+				if(this.config.zoomOutButtonClass) {
+					var zob = YUD.getElementsByClassName(this.config.zoomOutButtonClass);
+					YUE.on(zob, 'click', function(){_this.zoom(0);});
+				}
+				if(this.config.resetButtonClass) {
+					var rst = YUD.getElementsByClassName(this.config.resetButtonClass);
+					YUE.on(rst, 'click', function(){_this.reset();});
+				}
+				
+				// 注册滚轮事件
+				if(AE.bom.isIE) {
+					document.attachEvent('onmousewheel', function(){
+																	_this.zoom( event.wheelDelta>0 ? 1 : 0 );
+																});
+				} else if(AE.bom.isGecko) {
+					document.addEventListener('DOMMouseScroll', function(e){
+																	_this.zoom( e.detail>0 ? 0 : 1 );
+																}, false);
 				}
 			},
 			// 调整缩略图的大小和位置
@@ -162,7 +184,6 @@
 				this.dImages[li.index].style.display = '';
 				this.dImages[this.current].style.display = 'none';
 				this.current = li.index;
-
 				this.reset();
 			},
 			// type : 0/1 -> 缩/放
@@ -174,35 +195,39 @@
 				var _this = this;
 				var width = parseInt(YUD.getStyle(img, 'width')) || img.width;
 				var height = parseInt(YUD.getStyle(img, 'height')) || img.height;
-				var anim = new YAHOO.util.Anim();
+				if(!this.anim)
+					this.anim = new YAHOO.util.Anim();
 				if(img.ratio > 1) {
+					if(_this.anim.isAnimated()) {
+					//	alert('ff');	
+						return false;
+					}
 					if(type == 0) {
 						if( width - this.config.pSize > this.config.minSize) {
-							anim.init(img, {
+							_this.anim.init(img, {
 								width: {to: parseInt(width * (1 - this.config.pSize))}
 							}, _this.config.speed);
-							anim.animate();
-
+							_this.anim.animate();
 						}
 					} else {
-						anim.init(img, {
+						_this.anim.init(img, {
 							width: {to: parseInt(width * (1 + this.config.pSize))}
 						}, _this.config.speed);
-						anim.animate();
+						_this.anim.animate();
 					}
 				} else {
 					if(type == 0) {
 						if( height - this.config.pSize > this.config.minSize) {
-							anim.init(img, {
+							_this.anim.init(img, {
 								height: {to: parseInt(height * (1 - this.config.pSize))}
 							}, _this.config.speed);
-							anim.animate();
+							_this.anim.animate();
 						}
 					} else {
-						anim.init(img, {
+						_this.anim.init(img, {
 							height: {to: parseInt(height * (1 + this.config.pSize))}
 						}, _this.config.speed);
-						anim.animate();
+						_this.anim.animate();
 					}
 				}
 			},
@@ -215,9 +240,13 @@
 			}
 		};
 
-		var images = new AE.widget.imageDisplay();
-		//images.init();
-		//parent.
+		var images = new AE.widget.imageDisplay({
+			containerId        : 'display',
+			zoomInButtonClass  : 'zoom-in',
+			zoomOutButtonClass : 'zoom-out',
+			resetButtonClass   : 'reset'
+		});
+		images.init();
 	</script>
 
     
