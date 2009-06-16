@@ -143,13 +143,13 @@
 				
 				// 注册滚轮事件
 				if(AE.bom.isIE) {
-					document.attachEvent('onmousewheel', function(){
-																	_this.zoom( event.wheelDelta>0 ? 1 : 0 );
-																});
+					document.attachEvent('onmousewheel', function(){_this.zoom( event.wheelDelta>0 ? 1 : 0 );});
 				} else if(AE.bom.isGecko) {
-					document.addEventListener('DOMMouseScroll', function(e){
-																	_this.zoom( e.detail>0 ? 0 : 1 );
-																}, false);
+					document.addEventListener('DOMMouseScroll', function(e){_this.zoom( e.detail>0 ? 0 : 1 );}, false);
+				} else if(AE.bom.isOpera) {
+					document.addEventListener('mousewheel', function(e){_this.zoom( e.detail>0 ? 0 : 1 );}, false);
+				} else if(AE.bom.isSafari) {
+					document.addEventListener('mousewheel', function(e){_this.zoom( e.wheelDelta>0 ? 1 : 0 );}, false);
 				}
 			},
 			// 调整缩略图的大小和位置
